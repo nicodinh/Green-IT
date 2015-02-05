@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+	<fx:Metadata><![CDATA[
+    	[HostComponent("spark.components.List")]
+    ]]></fx:Metadata>
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<s:Rect alpha.disabled="0.5" alpha.normal="0.7000000000000001" height="126" height.normal="329" id="rect1" width="126" width.normal="513" x.normal="0.5" y.normal="0.5" x.disabled="20.5" y.disabled="35.5">
+		<s:stroke>
+			<s:SolidColorStroke alpha.normal="1" color="#5380D0" weight="1"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor alpha.normal="0.7000000000000001" color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect height="22" includeIn="disabled" width="111" x="21" y="36">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<s:RichText color="#2B4381" includeIn="disabled" text="Pomme" x="24" y="41" fontFamily="Arial"/>
+	<s:HScrollBar alpha.disabled="0.5" height.normal="15" viewport="{dataGroup}" width="113" width.normal="492" x.normal="5" y.normal="310" x.disabled="20" y.disabled="147" enabled.normal="false"/>
+	<s:VScrollBar alpha.disabled="0.5" height="113" height.normal="280" viewport="{dataGroup}" width.normal="15" x.normal="496" y.normal="3" x.disabled="132" y.disabled="35"/>
+	<s:DataGroup clipAndEnableScrolling="true" height="297" id="dataGroup" includeIn="normal" itemRenderer="components.RepeatedItem13" width="488" x="4" y="5">
+		<s:layout>
+			<s:VerticalLayout/>
+		</s:layout>
+	</s:DataGroup>
+</s:Skin>

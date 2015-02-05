@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009">
+	<fx:Metadata>[HostComponent("spark.components.Button")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<s:BitmapImage height="167" height.up="34" smooth="true" source="@Embed('/assets/images/BulleAide.png')" width="198" width.up="40" x="0" x.up="35" y.up="0" y.over="140" y.down="140" y.disabled="140">
+		<s:filters>
+			<s:GlowFilter alpha="1.0" blurX="6.0" blurY="6.0" color="#00A700" includeIn="over" inner="false" knockout="false" quality="2" strength="1"/>
+			<s:GlowFilter alpha="1.0" blurX="6.0" blurY="6.0" color="#EE0202" includeIn="down" inner="false" knockout="false" quality="2" strength="1"/>
+		</s:filters>
+	</s:BitmapImage>
+</s:Skin>

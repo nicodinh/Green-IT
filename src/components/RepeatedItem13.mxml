@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" autoDrawBackground="false">
+
+	<fx:Script>
+		<![CDATA[
+			import mx.core.Application;
+			import mx.core.FlexGlobals;
+			import mx.events.CloseEvent;
+			import mx.managers.PopUpManager;
+			import spark.components.TitleWindow;
+			
+			private var titleWindow:TitleWindow;
+			
+			protected function check_clickHandler(event:MouseEvent, 
+													 price:Number,
+													 money:Number,
+													 title:String):int
+			{		
+		
+				/* recuperer l'argent actuel dans le porte monnaie */
+				var currentMoney:int = FlexGlobals.topLevelApplication.tunes;
+				
+				
+				/* acheter la formation dematerialisation */
+				if (title == 'a' && cours.label == "Acheter la formation" && currentMoney > 0)
+				{	
+					if (currentMoney - price > 0)
+						FlexGlobals.topLevelApplication.tunes = currentMoney - price;
+					else 
+						return 1;
+					examen.enabled = true;
+					cours.label = "acceder au cours";
+					
+					return 1;
+				}
+				
+				/* acheter la formation logiciels*/
+				if (title == 'b' && cours.label == "Acheter la formation" && currentMoney > 0)
+				{
+					if (currentMoney - price > 0)
+					{
+						FlexGlobals.topLevelApplication.tunes = currentMoney - price;
+						FlexGlobals.topLevelApplication.software = 1;	
+					}
+					else 
+						return 1;
+					examen.enabled = true;
+					cours.label = "acceder au cours";
+					return 1;
+				}
+				
+				/* acheter la formation renouvellement*/
+				if (title == 'c' && cours.label == "Acheter la formation" && currentMoney > 0)
+				{
+					if (currentMoney - price > 0)
+					{
+						FlexGlobals.topLevelApplication.tunes = currentMoney - price;
+						FlexGlobals.topLevelApplication.sensibilisation = 1;
+					}
+					else 
+						return 1;
+					examen.enabled = true;
+					cours.label = "acceder au cours";
+					return 1;
+				}
+				
+				/* acheter la formation virtualisation */
+				if (title == 'd' && cours.label == "Acheter la formation" && currentMoney > 0)
+				{
+					if (currentMoney - price > 0)
+					{
+						FlexGlobals.topLevelApplication.tunes = currentMoney - price;
+						FlexGlobals.topLevelApplication.virtualisation = 1;
+					}
+					else 
+						return 1;
+					examen.enabled = true;
+					cours.label = "acceder au cours";
+					return 1;
+				}
+				
+				/* acheter la formation teletravail */
+				if (title == 'e' && cours.label == "Acheter la formation" && currentMoney > 0)
+				{
+					if (currentMoney - price > 0)
+						FlexGlobals.topLevelApplication.tunes = currentMoney - price;
+					else 
+						return 1;
+					examen.enabled = true;
+					cours.label = "acceder au cours";
+					return 1;
+				}
+				
+				/* acheter la formation renouvellement */
+				if (title == 'f' && cours.label == "Acheter la formation" && currentMoney > 0)
+				{
+					if (currentMoney - price > 0)
+						FlexGlobals.topLevelApplication.tunes = currentMoney - price;
+					else 
+						return 1;
+					examen.enabled = true;
+					cours.label = "acceder au cours";
+					return 1;
+				}
+				
+				/* acheter la formation centralisation */
+				if (title == 'g' && cours.label == "Acheter la formation" && currentMoney > 0)
+				{
+					if (currentMoney - price > 0)
+						FlexGlobals.topLevelApplication.tunes = currentMoney - price;
+					else 
+						return 1;
+					examen.enabled = true;
+					cours.label = "acceder au cours";
+					return 1;
+				}
+				
+				/* acheter la formation plan d'achat */
+				if (title == 'h' && cours.label == "Acheter la formation" && currentMoney > 0)
+				{
+					if (currentMoney - price > 0)
+						FlexGlobals.topLevelApplication.tunes = currentMoney - price;
+					else 
+						return 1;
+					examen.enabled = true;
+					cours.label = "acceder au cours";
+					return 1;
+				}
+				
+				/* acheter la formation recyclage */
+				if (title == 'i' && cours.label == "Acheter la formation" && currentMoney > 0)
+				{
+					if (currentMoney - price > 0)
+						FlexGlobals.topLevelApplication.tunes = currentMoney - price;
+					else 
+						return 1;
+					examen.enabled = true;
+					cours.label = "acceder au cours";
+					return 1;
+				}
+				
+				/* acceder a l'etat du cours correspondant*/
+				if (title == 'a' && cours.label == "acceder au cours")
+				{
+					FlexGlobals.topLevelApplication.currentState = 'coursDematerialisation1';
+				}
+				
+				if (title == 'b' && cours.label == "acceder au cours")
+				{
+					FlexGlobals.topLevelApplication.currentState = 'coursSoftware1';
+				}
+				
+				if (title == 'c' && cours.label == "acceder au cours")
+				{
+					FlexGlobals.topLevelApplication.currentState = 'coursSensibilisation1';
+				}
+				
+				if (title == 'd' && cours.label == "acceder au cours")
+				{
+					FlexGlobals.topLevelApplication.currentState = 'coursVirtualisation1';
+				}
+				
+				if (title == 'e' && cours.label == "acceder au cours")
+				{
+					FlexGlobals.topLevelApplication.currentState = 'coursTeletravail1';
+				}
+				
+				if (title == 'f' && cours.label == "acceder au cours")
+				{
+					FlexGlobals.topLevelApplication.currentState = 'coursRenouvellement1';
+				}
+				
+				if (title == 'g' && cours.label == "acceder au cours")
+				{
+					FlexGlobals.topLevelApplication.currentState = 'coursCentralisation';
+				}
+				
+				if (title == 'h' && cours.label == "acceder au cours")
+				{
+					FlexGlobals.topLevelApplication.currentState = 'coursPlan1';
+				}
+				
+				if (title == 'i' && cours.label == "acceder au cours")
+				{
+					FlexGlobals.topLevelApplication.currentState = 'coursRecyclage1';
+				}
+				
+				if (title == 'j')
+				{
+					titleWindow = new TitleWindow();		
+					titleWindow.title = "code promo";	
+					titleWindow.width = 200 + 5;
+					titleWindow.height = 200 + 42;
+					titleWindow.addEventListener(CloseEvent.CLOSE, titleWindow_close);
+					PopUpManager.addPopUp(titleWindow, this, true);
+					PopUpManager.centerPopUp(titleWindow);	
+				}
+			
+				return 0;
+			}
+			
+			private function titleWindow_close(event:CloseEvent):void 
+			{
+				PopUpManager.removePopUp(titleWindow);
+			}
+		]]>
+	</fx:Script>
+	
+
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="hovered"/>
+		<s:State name="selected"/>
+	</s:states>
+	<s:RichText color="#2B4381" fontFamily="Arial" fontSize="12" fontWeight="bold" height="24" tabStops="S0 S50 S100" text="{data.text1}" width="166" x="1" y="5"/>
+	<s:Button height="21" label="Passer l'examen" width="116" x="229" y="1" enabled="false" id="examen"/>
+	<s:RichText color="#2B4381" fontFamily="Arial" fontSize="12" height="24" tabStops="S0 S50 S100" text="{data.text2}" width="58" x="168" y="5"/>
+	<s:Button height="21" label="Acheter la formation" width="130" x="356" y="1" click="check_clickHandler(event, parseInt(data.arg3), parseInt(data.arg2), data.arg1)" id="cours"/>
+	<s:Rect alpha.hovered="0.3" alpha.normal="0" alpha.selected="0.5" height.hovered="23" height.normal="24" height.selected="23" d:userLabel="Rectangle de mise en évidence d’élément" width.hovered="489" width.normal="489" width.selected="223" x="0" y="0">
+		<s:fill>
+			<s:SolidColor color="0xCED7EE" color.hovered="#99B2EF" color.selected="#457AFF"/>
+		</s:fill>
+	</s:Rect>
+</s:ItemRenderer>
