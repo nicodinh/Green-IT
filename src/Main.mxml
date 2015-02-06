@@ -1,0 +1,1776 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:fc="http://ns.adobe.com/flashcatalyst/2009" xmlns:fclib="com.adobe.flashcatalyst.components.*" xmlns:mx="library://ns.adobe.com/flex/mx" backgroundColor="#FFFFFF" creationComplete="application_creationCompleteHandler()" currentState="menuTitre" height="600" preloaderChromeColor="#FFFFFF" width="800" showStatusBar="false">
+	<fx:Script>
+		<![CDATA[
+			/* voir le composant RepeatedItem13 pour l'etat de l'achat des formations */
+			import components.Music;
+			import components.Player;
+			
+			/* ini des musiques du jeu */
+			private var musicTitre:Music = new Music();
+			private var musicJeux:Music = new Music();
+			private var musicExam:Music = new Music();		
+			
+			/* nouveau joueur */
+			private var player:Player = new Player("George", 15000);
+			
+			
+			[Bindable]
+			public var tunes:int = player.argent;
+			
+			
+			/* competence acquises */
+			public var software:int = 0;
+			public var virtualisation:int = 0;
+			public var sensibilisation:int = 0;
+			
+			private var secretaireEtat:int;
+			
+			
+				
+			protected function application_creationCompleteHandler():void
+			{			
+				/* Centrer la fenetre */
+				nativeWindow.x = (Capabilities.screenResolutionX - nativeWindow.width) / 2;
+				nativeWindow.y = (Capabilities.screenResolutionY - nativeWindow.height) / 2;
+				
+				currentState='menuTitre';
+				musicTitre.playMusic("assets/media/son_menu.mp3");
+			}
+				
+			protected function button_clickHandler():void
+			{
+				musicTitre.stopMusic();
+				musicJeux.playMusic("assets/media/during_game.mp3");
+				currentState='interfaceJeux';
+				Sequence4.play();
+				/* cacher la secretaire */
+				secretaireNM.visible = false;
+				secretaireEtat = 0;
+			}
+	
+			/*
+				
+				changement des etats du jeu et les events de tout les boutons
+				il y a un paquet de boutons..
+				leur implementations se trouvent dans le dossier components/
+			
+			*/
+
+			protected function boutonCharger_clickHandler():void
+			{
+				currentState='chargerPartieTitre';
+				Sequence1.play();
+			}
+	
+	
+			protected function boutonRevenirMenu_clickHandler():void
+			{
+					currentState='menuTitre';
+					Sequence17.play();
+			}
+	
+	
+			protected function button_clickHandler_1():void
+			{
+					currentState='menuTitre';
+					Sequence18.play();
+			}
+	
+	
+	
+			protected function boutonOptions_clickHandler():void
+			{
+					currentState='optionTitre';
+					Sequence3.play();
+			}
+	
+	
+			protected function boutonMenu_clickHandler():void
+			{
+					currentState='menuJeux';
+					Sequence15.play();
+			}
+	
+	
+			protected function boutonRevenirJeux_clickHandler():void
+			{
+					currentState='interfaceJeux';
+					Sequence24.play();
+			}
+	
+	
+			protected function button_clickHandler_2():void
+			{
+					currentState='menuJeux';
+					Sequence25.play();
+			}
+	
+	
+			protected function boutonNouvellePartie_clickHandler():void
+			{
+					currentState='interfaceJeux';
+					Sequence23.play();
+			}
+	
+	
+			protected function boutonChargerPartie_clickHandler():void
+			{
+					currentState='menuChargerPartie';
+					Sequence22.play();
+			}
+	
+	
+			protected function button_clickHandler_3():void
+			{
+					currentState='menuJeux';
+					Sequence26.play();
+			}
+	
+	
+			protected function button_clickHandler_4():void
+			{
+					currentState='menuJeux';
+					Sequence27.play();
+			}
+	
+	
+			protected function boutonOptionsJeux_clickHandler():void
+			{
+					currentState='menuOptionPartie';
+					Sequence20.play();
+			}
+	
+	
+			protected function boutonSauvegarderPartie_clickHandler():void
+			{
+					currentState='menuSauvegarderPartie';
+					Sequence21.play();
+			}
+	
+	
+			protected function button_clickHandler_5():void
+			{
+					currentState='interfaceJeux';
+					Sequence28.play();
+			}
+	
+	
+			protected function boutonCompetences_clickHandler():void
+			{
+					currentState='cours';
+					Sequence14.play();
+			}
+	
+	
+			
+	
+	
+			protected function button_clickHandler_7():void
+			{
+					currentState='interfaceJeux';
+					Sequence29.play();
+			}
+	
+	
+			protected function boutonQuitter_clickHandler():void
+			{
+				
+					Sequence2.play();
+					this.stage.nativeWindow.close();
+					
+			}
+	
+	
+			protected function button_clickHandler_8():void
+			{
+					Sequence5.play();
+					currentState = 'missionToutenkamionPresentation';
+			}
+	
+	
+			protected function button_clickHandler_9():void
+			{
+					Sequence6.play();
+					currentState = 'missionAquakaPresentation';
+			}
+	
+	
+			protected function button_clickHandler_10():void
+			{
+					Sequence7.play();
+					currentState = 'missionsBanquePresentation';
+			}
+	
+	
+			protected function button_clickHandler_11():void
+			{
+					Sequence8.play();
+					currentState = 'missionCitronvertPresentation';
+			}
+	
+	
+			protected function button_clickHandler_12():void
+			{
+					Sequence9.play();
+					currentState = 'missionsHopitalPresentation';
+			}
+	
+	
+			protected function button_clickHandler_13():void
+			{
+					Sequence10.play();
+					currentState = 'missionHaribokPresentation';
+			}
+	
+	
+			protected function button_clickHandler_14():void
+			{
+					Sequence11.play();
+					currentState = 'missionXFlowerPresentation';
+			}
+	
+	
+			protected function boutonValide_clickHandler():void
+			{
+				Sequence12.play();
+			}
+	
+	
+			protected function boutonMissions_clickHandler():void
+			{
+					Sequence13.play();
+					currentState='missionsDisponible';
+			}
+	
+	
+			protected function boutonSecretaire_clickHandler():void
+			{
+				Sequence16.play();
+				
+				if (secretaireEtat == 0)
+				{
+					secretaireNM.visible = true;
+					secretaireEtat = 1;
+				}
+				else
+				{
+					secretaireNM.visible = false;
+					secretaireEtat = 0;
+				}
+				
+			}
+	
+	
+			protected function boutonQuitterJeux_clickHandler():void
+			{
+				Sequence19.play();
+				this.stage.nativeWindow.close();
+			}
+	
+			/* debut - passage entre les pages des cours */
+	
+			protected function button_clickHandler_15():void
+			{
+				Sequence30.play();
+				if (currentState == 'coursDematerialisation1')
+					currentState = 'coursDematerialisation2';
+				else if (currentState == 'coursDematerialisation2')
+					currentState = 'coursDematerialisation3';
+				
+				if (currentState == 'coursRecyclage1')
+					currentState = 'coursRecyclage2';
+				
+				if (currentState == 'coursVirtualisation1')
+					currentState = 'coursVirtualisation2';
+				else if (currentState == 'coursVirtualisation2')
+					currentState = 'coursVirtualisation3';
+				
+				if (currentState == 'coursTeletravail1')
+					currentState = 'coursTeletravail2';
+				
+				if (currentState == 'coursSoftware1')
+					currentState = 'coursSoftware2';
+				else if (currentState == 'coursSoftware2')
+					currentState = 'coursSoftware3';
+				
+				if (currentState == 'coursSensibilisation1')
+					currentState = 'coursSensibilisation2';
+				
+				if (currentState == 'coursRenouvellement1')
+					currentState = 'coursRenouvellement2';
+				
+				if (currentState == 'coursPlan1')
+					currentState = 'coursPlan2';
+				else if (currentState == 'coursPlan2')
+					currentState = 'coursPlan3';
+				else if (currentState == 'coursPlan3')
+					currentState = 'coursPlan4';
+	
+			}
+	
+	
+			protected function button_clickHandler_16():void
+			{
+				Sequence31.play();
+				if (currentState == 'coursDematerialisation2')
+					currentState = 'coursDematerialisation1';
+				else if (currentState == 'coursDematerialisation3')
+					currentState = 'coursDematerialisation2';
+				
+				if (currentState == 'coursRecyclage2')
+					currentState = 'coursRecyclage1';
+				
+				if (currentState == 'coursVirtualisation3')
+					currentState = 'coursVirtualisation2';
+				else if (currentState == 'coursVirtualisation2')
+					currentState = 'coursVirtualisation1';
+				
+				if (currentState == 'coursTeletravail2')
+					currentState = 'coursTeletravail1';
+				
+				if (currentState == 'coursSoftware3')
+					currentState = 'coursSoftware2';
+				else if (currentState == 'coursSoftware2')
+					currentState = 'coursSoftware1';
+				
+				if (currentState == 'coursSensibilisation2')
+					currentState = 'coursSensibilisation1';
+				
+				if (currentState == 'coursRenouvellement2')
+					currentState = 'coursRenouvellement1';
+				
+				if (currentState == 'coursPlan4')
+					currentState = 'coursPlan3';
+				else if (currentState == 'coursPlan3')
+					currentState = 'coursPlan2';
+				else if (currentState == 'coursPlan2')
+					currentState = 'coursPlan1';
+	
+			}
+	
+			/* fin - passage entre les pages des cours */
+			
+			protected function button_clickHandler_17():void
+			{
+					currentState='interfaceJeux';
+					Sequence32.play();
+			}
+	
+	
+			protected function button_clickHandler_18():void
+			{
+				Sequence33.play();
+			}
+	
+	
+			protected function button_clickHandler_19():void
+			{
+				Sequence34.play();
+			}
+	
+	
+			
+	
+	
+			protected function button_clickHandler_6():void
+			{
+					currentState='interfaceJeux';
+					Sequence35.play();
+			}
+	
+	
+			protected function button_clickHandler_20():void
+			{
+				Sequence36.play();
+			}
+	
+	
+			protected function button_clickHandler_21():void
+			{
+				Sequence37.play();
+				
+				/* tp sensibilisation (secretaire) de la mission banque*/
+				if (sensibilisation == 0)
+					currentState = 'banqueTP3';
+				else
+					currentState = 'banqueTP3Play';
+			}
+	
+	
+			protected function button_clickHandler_22():void
+			{
+				Sequence38.play();
+				
+				/* tp software (reponsable parc info) de la mission banque*/
+				if (software == 0)
+					currentState = 'banqueTP1';
+				else
+					currentState = 'banqueTP1Play';
+				
+			}
+	
+	
+			protected function button_clickHandler_23():void
+			{
+				Sequence39.play();
+			}
+	
+	
+			protected function button_clickHandler_24():void
+			{
+				Sequence40.play();
+				
+				/* tp virtualisation (dsi) de la mission banque */
+				if (virtualisation == 0)
+					currentState = 'banqueTP2';
+				else
+					currentState = 'banqueTP2Play';
+				
+			}
+	
+	
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				currentState = 'missionBanque1';
+				musicJeux.stopMusic();
+				musicJeux = new Music();
+				musicExam.playMusic("assets/media/son_pendant_exam.mp3");
+			}
+	
+	
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				currentState = 'missionBanque1';
+				musicJeux.stopMusic();
+				musicJeux = new Music();
+				musicExam.playMusic("assets/media/son_pendant_exam.mp3");
+			}
+	
+	
+			protected function button3_clickHandler(event:MouseEvent):void
+			{
+				currentState='interfaceJeux';
+				musicExam.stopMusic();
+				musicExam = new Music();
+				musicJeux.playMusic("assets/media/during_game.mp3");
+				
+			}
+
+			protected function button4_clickHandler(event:MouseEvent):void
+			{
+				currentState='missionBanque1';
+			}
+
+
+			protected function button5_clickHandler(event:MouseEvent):void
+			{
+				currentState='missionBanque1';
+			}
+
+			
+			protected function button6_clickHandler(event:MouseEvent):void
+			{
+				currentState='missionBanque1';
+			}
+
+
+			protected function button7_clickHandler(event:MouseEvent):void
+			{
+				currentState='missionBanque1';
+			}
+
+
+			protected function button8_clickHandler(event:MouseEvent):void
+			{
+				currentState='banqueTP2Play';
+			}
+
+
+			protected function button9_clickHandler(event:MouseEvent):void
+			{
+				currentState='banqueTP2Play2';
+			}
+
+
+			protected function button10_clickHandler(event:MouseEvent):void
+			{
+				currentState='missionBanque1';
+			}
+
+
+			protected function button11_clickHandler(event:MouseEvent):void
+			{
+				currentState='missionBanque1';
+			}
+
+
+			protected function button12_clickHandler(event:MouseEvent):void
+			{
+				currentState='banqueTP3Play2';
+			}
+
+
+			protected function button13_clickHandler(event:MouseEvent):void
+			{
+				currentState='banqueTP3Play';
+			}
+
+		]]>
+	</fx:Script>
+	
+	<!-- Tous les états du jeux -->
+	
+	<s:states>
+		<s:State fc:color="0xcc0000" name="interfaceJeux"/>
+		<s:State fc:color="0x0081cc" name="menuTitre"/>
+		<s:State fc:color="0x00cc21" name="chargerPartieTitre"/>
+		<s:State fc:color="0x0003a3" name="optionTitre"/>
+		<s:State fc:color="0xff5f08" name="menuJeux"/>
+		<s:State fc:color="0xdf08ff" name="menuChargerPartie"/>
+		<s:State fc:color="0x82ff36" name="menuSauvegarderPartie"/>
+		<s:State fc:color="0x919410" name="menuOptionPartie"/>
+		<s:State fc:color="0xa30017" name="cours"/>
+		<s:State fc:color="0x08ffb6" name="coursGreenIT"/>
+		<s:State fc:color="0x510900" name="coursManagementIT"/>
+		<s:State fc:color="0xbbcc00" name="missionsDisponible"/>
+		<s:State fc:color="0x0081cc" name="exam"/>
+		<s:State name="missionBanque1" fc:color="0x00cc21"/>
+		<s:State name="banqueTP1"/>
+		<s:State name="missionsBanquePresentation"/>
+		<s:State name="missionsHopitalPresentation"/>
+		<s:State name="missionXFlowerPresentation"/>
+		<s:State name="missionToutenkamionPresentation"/>
+		<s:State name="missionHaribokPresentation"/>
+		<s:State name="missionCitronvertPresentation"/>
+		<s:State name="missionAquakaPresentation"/>
+		<s:State name="banqueTP2"/>
+		<s:State name="banqueTP3"/>
+		<s:State name="banqueTP4"/>
+		<s:State name="coursDematerialisation1"/>
+		<s:State name="coursDematerialisation2"/>
+		<s:State name="coursDematerialisation3"/>
+		<s:State name="coursRecyclage1"/>
+		<s:State name="coursRecyclage2"/>
+		<s:State name="coursVirtualisation1"/>
+		<s:State name="coursVirtualisation2"/>
+		<s:State name="coursVirtualisation3"/>
+		<s:State name="coursTeletravail1"/>
+		<s:State name="coursTeletravail2"/>
+		<s:State name="coursSoftware1"/>
+		<s:State name="coursSoftware2"/>
+		<s:State name="coursSoftware3"/>
+		<s:State name="coursSensibilisation1"/>
+		<s:State name="coursSensibilisation2"/>
+		<s:State name="coursRenouvellement1"/>
+		<s:State name="coursRenouvellement2"/>
+		<s:State name="coursCentralisation"/>
+		<s:State name="coursPlan1"/>
+		<s:State name="coursPlan2"/>
+		<s:State name="coursPlan3"/>
+		<s:State name="coursPlan4"/>
+		<s:State name="examDemaQ1"/>
+		<s:State name="examDemaQ2"/>
+		<s:State name="examDemaQ3"/>
+		<s:State name="examRecyclQ1"/>
+		<s:State name="examRecyclQ2"/>
+		<s:State name="examRecyclQ3"/>
+		<s:State name="examRecyclQ4"/>
+		<s:State name="examVirtuQ1"/>
+		<s:State name="examVirtuQ2"/>
+		<s:State name="examVirtuQ3"/>
+		<s:State name="examVirtuQ4"/>
+		<s:State name="examTeletravailQ1"/>
+		<s:State name="examTeletravailQ2"/>
+		<s:State name="examTeletravailQ3"/>
+		<s:State name="examTeletravailQ4"/>
+		<s:State name="examSoftQ1"/>
+		<s:State name="examSoftQ2"/>
+		<s:State name="examSoftQ3"/>
+		<s:State name="examSoftQ4"/>
+		<s:State name="examSensiQ1"/>
+		<s:State name="examSensiQ2"/>
+		<s:State name="examSensiQ3"/>
+		<s:State name="examSensiQ4"/>
+		<s:State name="examRenouQ1"/>
+		<s:State name="examRenouQ2"/>
+		<s:State name="examRenouQ3"/>
+		<s:State name="examRenouQ4"/>
+		<s:State name="examCentraQ1"/>
+		<s:State name="examCentraQ2"/>
+		<s:State name="examCentraQ3"/>
+		<s:State name="examAchatQ1"/>
+		<s:State name="examAchatQ2"/>
+		<s:State name="examAchatQ3"/>
+		<s:State name="examAchatQ4"/>
+		<s:State name="banqueTP5"/>
+		<s:State name="banqueTP1Play"/>
+		<s:State name="banqueTP2Play"/>
+		<s:State name="banqueTP2Play2"/>
+		<s:State name="banqueTP3Play"/>
+		<s:State name="banqueTP3Play2"/>
+	</s:states>
+	
+	<!--déclarations des médias sonore-->
+	
+	<fx:Declarations>
+		<s:Parallel id="Sequence1">
+			<s:Parallel target="{button10}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence2">
+			<s:Parallel target="{button9}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence3">
+			<s:Parallel target="{button8}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence4">
+			<s:Parallel target="{button6}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence5">
+			<s:Parallel target="{button13}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3" startDelay="0"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence6">
+			<s:Parallel target="{button14}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence7">
+			<s:Parallel target="{button18}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence8">
+			<s:Parallel target="{button19}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3" startDelay="0"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence9">
+			<s:Parallel target="{button15}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3" startDelay="0"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence10">
+			<s:Parallel target="{button17}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence11">
+			<s:Parallel target="{button16}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3" startDelay="0"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence12">
+			<s:Parallel target="{button5}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence13">
+			<s:Parallel target="{button4}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence14">
+			<s:Parallel target="{button3}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3" startDelay="0"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence15">
+			<s:Parallel target="{button2}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence16">
+			<s:Parallel target="{button1}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3" startDelay="0"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence17">
+			<s:Parallel target="{button12}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence18">
+			<s:Parallel target="{button11}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence19">
+			<s:Parallel target="{button26}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence20">
+			<s:Parallel target="{button25}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence21">
+			<s:Parallel target="{button24}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence22">
+			<s:Parallel target="{button23}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3" startDelay="0"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence23">
+			<s:Parallel target="{button22}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3" startDelay="0"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence24">
+			<s:Parallel target="{button21}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3" startDelay="0"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence25">
+			<s:Parallel target="{button27}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence26">
+			<s:Parallel target="{button28}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3" startDelay="0"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence27">
+			<s:Parallel target="{button20}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence28">
+			<s:Parallel target="{button29}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3" startDelay="0"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence29">
+			<s:Parallel target="{button30}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence30">
+			<s:Parallel target="{button31}">
+				<mx:SoundEffect duration="500" source="assets/media/tourner_page.mp3" startDelay="0"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence31">
+			<s:Parallel target="{button32}">
+				<mx:SoundEffect duration="500" source="assets/media/tourner_page.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence32">
+			<s:Parallel target="{button33}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence33">
+			<s:Parallel target="{button34}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence34">
+			<s:Parallel target="{button35}">
+				<mx:SoundEffect duration="500" source="assets/media/simpleClick.mp3" startDelay="0"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence35">
+			<s:Parallel target="{button36}">
+				<mx:SoundEffect duration="1000" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence36">
+			<s:Parallel target="{button37}">
+				<mx:SoundEffect duration="1000" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence37">
+			<s:Parallel target="{button38}">
+				<mx:SoundEffect duration="1000" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence38">
+			<s:Parallel target="{button39}">
+				<mx:SoundEffect duration="1000" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence39">
+			<s:Parallel target="{button40}">
+				<mx:SoundEffect duration="1000" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+		<s:Parallel id="Sequence40">
+			<s:Parallel target="{button41}">
+				<mx:SoundEffect duration="1000" source="assets/media/simpleClick.mp3"/>
+			</s:Parallel>
+		</s:Parallel>
+	</fx:Declarations>
+	
+	<!--tout les composants de chaque etat sont ici-->
+	
+	<fx:DesignLayer d:userLabel="interfaceJeux">
+		<s:BitmapImage height="600" id="bitmapimage3" includeIn="interfaceJeux" d:locked="true" smooth="true" source="@Embed('/assets/images/Ville - batiments - 800x600.png')" d:userLabel="ville" width="800" x="0" y="0"/>
+		<s:BitmapImage id="bitmapimage27" includeIn="interfaceJeux" d:locked="true" smooth="true" source="@Embed('/assets/images/BarreHautNoLVL.png')" x="0" y="0"/>
+		<s:Button click="boutonSecretaire_clickHandler()" id="button1" includeIn="interfaceJeux" skinClass="components.Button2" d:userLabel="BoutonSecretaire" x="345" y="5"/>
+		<s:BitmapImage id="bitmapimage21" includeIn="interfaceJeux" d:locked="true" smooth="true" source="@Embed('/assets/images/InterfaceJeuBas.png')" x="0" y="405"/>
+		<s:Button click="boutonMenu_clickHandler()" id="button2" includeIn="interfaceJeux" skinClass="components.Button3" d:userLabel="BoutonMenu" x="721" y="497"/>
+		<s:Button click="boutonCompetences_clickHandler()" id="button3" includeIn="interfaceJeux" skinClass="components.Button4" d:userLabel="BoutonCompetences" x="643" y="497"/>
+		<s:Button click="boutonMissions_clickHandler()" id="button4" includeIn="interfaceJeux" skinClass="components.Button5" d:userLabel="BoutonMissions" x="560" y="497"/>
+		<s:Button click="boutonValide_clickHandler()" id="button5" includeIn="interfaceJeux" skinClass="components.Button7" d:userLabel="BoutonValide" x="409" y="525"/>
+		<s:Button click="button_clickHandler_14()" id="button16" includeIn="interfaceJeux" skinClass="components.Button19" x="709" y="137"/>
+		<s:Button click="button_clickHandler_13()" id="button17" includeIn="interfaceJeux" skinClass="components.Button20" x="621" y="249"/>
+		<s:Button click="button_clickHandler_12()" id="button15" includeIn="interfaceJeux" skinClass="components.Button18" x="468" y="37"/>
+		<s:Button click="button_clickHandler_11()" id="button19" includeIn="interfaceJeux" skinClass="components.Button22" x="10" y="183"/>
+		<s:Button click="button_clickHandler_10()" id="button18" includeIn="interfaceJeux" skinClass="components.Button21" x="538" y="388"/>
+		<s:Button click="button_clickHandler_9()" id="button14" includeIn="interfaceJeux" skinClass="components.Button17" x="293" y="33"/>
+		<s:Button click="button_clickHandler_8()" id="button13" includeIn="interfaceJeux" skinClass="components.Button15" x="277" y="128"/>
+	</fx:DesignLayer>
+	
+	<fx:DesignLayer id="designlayer1" d:userLabel="menuTitre">
+		<s:BitmapImage id="bitmapimage4" includeIn="menuTitre" d:locked="true" smooth="true" source="@Embed('/assets/images/EcranTitre.png')" x="0" y="0"/>
+		<s:Button click="button_clickHandler()" id="button6" includeIn="menuTitre" skinClass="components.Button8" d:userLabel="BoutonNouvellePartie" x="196" y="319"/>
+		<s:Button click="boutonOptions_clickHandler()" id="button8" includeIn="menuTitre" skinClass="components.Button10" d:userLabel="BoutonOptions" x="196" y="422"/>
+		<s:Button click="boutonQuitter_clickHandler()" id="button9" includeIn="menuTitre" skinClass="components.Button11" d:userLabel="BoutonQuitter" x="196" y="472"/>
+		<s:Button click="boutonCharger_clickHandler()" id="button10" includeIn="menuTitre,interfaceJeux" skinClass="components.BoutonchargerPa_Button2" d:userLabel="BoutonCharger" visible.interfaceJeux="false" x="196" y="371"/>
+	</fx:DesignLayer>
+	
+	<fx:DesignLayer d:userLabel="chargerPartieTitre">
+		<s:BitmapImage id="bitmapimage14" includeIn="chargerPartieTitre" d:locked="true" smooth="true" source="@Embed('/assets/images/EcranTitre.png')" x="0" y="0"/>
+		<s:BitmapImage id="bitmapimage15" includeIn="chargerPartieTitre" d:locked="true" smooth="true" source="@Embed('/assets/images/ChargerPartie.png')" d:userLabel="titreCharger" x="196" y="323">
+			<s:filters>
+				<s:DropShadowFilter alpha="0.5" angle="45" blurX="4.0" blurY="4.0" color="0x000000" distance="8" hideObject="false" inner="false" knockout="false" quality="2" strength="1"/>
+			</s:filters>
+		</s:BitmapImage>
+		<s:Button click="boutonRevenirMenu_clickHandler()" id="button12" includeIn="chargerPartieTitre" skinClass="components.Button13" d:userLabel="BoutonRevenirMenu" x="196" y="485"/>
+	</fx:DesignLayer>
+	
+	<fx:DesignLayer d:userLabel="optionTitre">
+		<s:BitmapImage id="bitmapimage12" includeIn="optionTitre" d:locked="true" smooth="true" source="@Embed('/assets/images/EcranTitre.png')" x="0" y="0"/>
+		<s:BitmapImage id="bitmapimage13" includeIn="optionTitre" d:locked="true" smooth="true" source="@Embed('/assets/images/Options.png')" x="196" y="324">
+			<s:filters>
+				<s:DropShadowFilter alpha="0.5" angle="45.0" blurX="4.0" blurY="4.0" color="0x000000" distance="8" hideObject="false" inner="false" knockout="false" quality="2" strength="1"/>
+			</s:filters>
+		</s:BitmapImage>
+		<s:Button click="button_clickHandler_1()" id="button11" includeIn="optionTitre" skinClass="components.Button14" x="196" y="488"/>
+	</fx:DesignLayer>
+	
+	<fx:DesignLayer d:userLabel="menuJeux">
+		<s:BitmapImage includeIn="interfaceJeux,menuJeux" d:locked="true" smooth="true" source="@Embed('/assets/images/backgroundsamediflou.png')" visible.interfaceJeux="false" x.menuJeux="0" y.menuJeux="0"/>
+		<s:BitmapImage height="558" id="bitmapimage17" includeIn="menuJeux" d:locked="true" smooth="true" source="@Embed('/assets/images/MenuOption.png')" width="322" x="238" y="26"/>
+		<s:Button click="boutonRevenirJeux_clickHandler()" id="button21" includeIn="menuJeux" skinClass="components.Button16" d:userLabel="BoutonRevenirJeux" x="255" y="126"/>
+		<s:Button click="boutonNouvellePartie_clickHandler()" id="button22" includeIn="menuJeux" skinClass="components.Button23" d:userLabel="BoutonNouvellePartie" x="253" y="196"/>
+		<s:Button click="boutonChargerPartie_clickHandler()" id="button23" includeIn="menuJeux" skinClass="components.Button24" d:userLabel="BoutonChargerPartie" x="255" y="272"/>
+		<s:Button click="boutonSauvegarderPartie_clickHandler()" id="button24" includeIn="menuJeux" skinClass="components.Button25" d:userLabel="BoutonSauvegarderPartie" x="255" y="344"/>
+		<s:Button click="boutonOptionsJeux_clickHandler()" id="button25" includeIn="menuJeux" skinClass="components.Button26" d:userLabel="BoutonOptionsJeux" x="255" y="417"/>
+		<s:Button click="boutonQuitterJeux_clickHandler()" id="button26" includeIn="menuJeux" skinClass="components.Button27" d:userLabel="BoutonQuitterJeux" x="255" y="494"/>
+	</fx:DesignLayer>
+	
+	<fx:DesignLayer d:userLabel="menuChargerPartie">
+		<s:BitmapImage includeIn="menuChargerPartie" d:locked="true" smooth="true" source="@Embed('/assets/images/backgroundsamediflou.png')" x="0" y="0"/>
+		<s:BitmapImage height="558" includeIn="menuChargerPartie" d:locked="true" smooth="true" source="@Embed('/assets/images/MenuOption.png')" width="322" x="238" y="26"/>
+		<s:Button click="button_clickHandler_2()" id="button27" includeIn="menuChargerPartie" skinClass="components.Button28" x="255" y="486"/>
+		<s:BitmapImage height="72" includeIn="menuChargerPartie" d:locked="true" smooth="true" source="@Embed('/assets/images/BouttonCharger.png')" width="290" x="255" y="131"/>
+	</fx:DesignLayer>
+	
+	<fx:DesignLayer d:userLabel="menuSauvegarderPartie">
+		<s:BitmapImage includeIn="menuSauvegarderPartie" d:locked="true" smooth="true" source="@Embed('/assets/images/backgroundsamediflou.png')" x="0" y="0"/>
+		<s:BitmapImage height="558" includeIn="menuSauvegarderPartie" d:locked="true" smooth="true" source="@Embed('/assets/images/MenuOption.png')" width="322" x="238" y="26"/>
+		<s:BitmapImage height="72" includeIn="menuSauvegarderPartie" d:locked="true" smooth="true" source="@Embed('/assets/images/BouttonSave.png')" width="290" x="255" y="131"/>
+		<s:Button click="button_clickHandler_3()" id="button28" includeIn="menuSauvegarderPartie" skinClass="components.Button29" x="255" y="486"/>
+	</fx:DesignLayer>
+	
+	<fx:DesignLayer d:userLabel="menuOptionPartie">
+		<s:BitmapImage includeIn="menuOptionPartie" d:locked="true" smooth="true" source="@Embed('/assets/images/backgroundsamediflou.png')" x="0" y="0"/>
+		<s:BitmapImage height="558" id="bitmapimage19" includeIn="menuOptionPartie" d:locked="true" smooth="true" source="@Embed('/assets/images/MenuOption.png')" width="322" x="238" y="26"/>
+		<s:BitmapImage height="72" id="bitmapimage20" includeIn="menuOptionPartie" d:locked="true" smooth="true" source="@Embed('/assets/images/BouttonOption.png')" width="290" x="255" y="131"/>
+		<s:Button click="button_clickHandler_4()" id="button20" includeIn="menuOptionPartie" skinClass="components.Button30" x="255" y="486"/>
+	</fx:DesignLayer>
+	
+	<fx:DesignLayer d:userLabel="cours">
+		<s:BitmapImage id="bitmapimage22" includeIn="cours" d:locked="true" smooth="true" source="@Embed('/assets/images/backgroundsamediflou.png')" x="0" y="0"/>
+		<s:BitmapImage id="bitmapimage23" includeIn="cours" d:locked="true" smooth="true" source="@Embed('/assets/images/Fondmenu-cours-it-decision.png')" x="111" y="96"/>
+		<s:Button click="button_clickHandler_5()" id="button29" includeIn="cours" skinClass="components.Button31" x="666" y="109" width="25" height="23"/>
+		<s:List enabled="true" includeIn="cours" skinClass="components.DataList6" x="155" y="135" height="335">
+			<s:ArrayCollection>
+				<fx:Object text1="Dématérialisation" text2="2000 €" arg1="a" arg2="{tunes.toString()}" arg3="2000"/>
+				<fx:Object text1="Logiciels écologiques" text2="2000 €"  arg2="{tunes.toString()}" arg1="b" arg3="2000"/>
+				<fx:Object text1="Sensibilisation" text2="2000 €" arg1="c"  arg2="{tunes.toString()}" arg3="2000"/>
+				<fx:Object text1="Virtualisation" text2="2000 €" arg1="d"  arg2="{tunes.toString()}" arg3="2000"/>
+				<fx:Object text1="Télétravail" text2="2000 €" arg1="e"  arg2="{tunes.toString()}" arg3="2000"/>
+				<fx:Object text1="Renouvellement du parc informatique" text2="2000 €" arg1="f"  arg2="{tunes.toString()}" arg3="2000"/>
+				<fx:Object text1="Centralisation de données" text2="2000 €" arg1="g"  arg2="{tunes.toString()}" arg3="2000"/>
+				<fx:Object text1="Plan d’achat" text2="2000 €" arg1="h"  arg2="{tunes.toString()}" arg3="2000"/>
+				<fx:Object text1="Recyclage" text2="2000 €" arg1="i"  arg2="{tunes.toString()}" arg3="2000"/>
+				<fx:Object text1="Diplome Supinfo" text2="25 000€" arg1="j"  arg2="{tunes.toString()}" arg3="25000"/>
+			</s:ArrayCollection>
+		</s:List>
+	</fx:DesignLayer>
+	
+	<fx:DesignLayer d:userLabel="coursGreenIT">
+		<s:BitmapImage includeIn="coursCentralisation,coursDematerialisation1,coursDematerialisation2,coursDematerialisation3,coursGreenIT,coursPlan1,coursPlan2,coursPlan3,coursPlan4,coursRecyclage1,coursRecyclage2,coursRenouvellement1,coursRenouvellement2,coursSensibilisation1,coursSensibilisation2,coursSoftware1,coursSoftware2,coursSoftware3,coursTeletravail1,coursTeletravail2,coursVirtualisation1,coursVirtualisation2,coursVirtualisation3" d:locked="true" smooth="true" source="@Embed('/assets/images/backgroundsamediflou.png')" x="0" y="0"/>
+		<s:BitmapImage includeIn="coursCentralisation,coursDematerialisation1,coursDematerialisation2,coursDematerialisation3,coursGreenIT,coursPlan1,coursPlan2,coursPlan3,coursPlan4,coursRecyclage1,coursRecyclage2,coursRenouvellement1,coursRenouvellement2,coursSensibilisation1,coursSensibilisation2,coursSoftware1,coursSoftware2,coursSoftware3,coursTeletravail1,coursTeletravail2,coursVirtualisation1,coursVirtualisation2,coursVirtualisation3" d:locked="true" smooth="true" source="@Embed('/assets/images/InterfaceCG.png')" x="120" y="104"/>
+		<s:Button click="button_clickHandler_16()" id="button32" includeIn="coursCentralisation,coursDematerialisation1,coursDematerialisation2,coursDematerialisation3,coursGreenIT,coursPlan1,coursPlan2,coursPlan3,coursPlan4,coursRecyclage1,coursRecyclage2,coursRenouvellement1,coursRenouvellement2,coursSensibilisation1,coursSensibilisation2,coursSoftware1,coursSoftware2,coursSoftware3,coursTeletravail1,coursTeletravail2,coursVirtualisation1,coursVirtualisation2,coursVirtualisation3" skinClass="components.Button35" x="142" y="273"/>
+		<s:Button click="button_clickHandler_15()" id="button31" includeIn="coursCentralisation,coursDematerialisation1,coursDematerialisation2,coursDematerialisation3,coursGreenIT,coursPlan1,coursPlan2,coursPlan3,coursPlan4,coursRecyclage1,coursRecyclage2,coursRenouvellement1,coursRenouvellement2,coursSensibilisation1,coursSensibilisation2,coursSoftware1,coursSoftware2,coursSoftware3,coursTeletravail1,coursTeletravail2,coursVirtualisation1,coursVirtualisation2,coursVirtualisation3" skinClass="components.Button36" x="635" y="273" click.coursDematerialisation2="button_clickHandler_15()"/>
+		<s:Button click="button_clickHandler_7()" id="button30" includeIn="coursCentralisation,coursDematerialisation1,coursDematerialisation2,coursDematerialisation3,coursGreenIT,coursPlan1,coursPlan2,coursPlan3,coursPlan4,coursRecyclage1,coursRecyclage2,coursRenouvellement1,coursRenouvellement2,coursSensibilisation1,coursSensibilisation2,coursSoftware1,coursSoftware2,coursSoftware3,coursTeletravail1,coursTeletravail2,coursVirtualisation1,coursVirtualisation2,coursVirtualisation3" skinClass="components.Button34" x="666" y="117"/>
+	</fx:DesignLayer>
+	
+	<fx:DesignLayer d:userLabel="coursManagementIT">
+		<s:BitmapImage id="bitmapimage24" includeIn="coursManagementIT" d:locked="true" smooth="true" source="@Embed('/assets/images/backgroundsamediflou.png')" x="0" y="0"/>
+		<s:BitmapImage id="bitmapimage25" includeIn="coursManagementIT" d:locked="true" smooth="true" source="@Embed('/assets/images/InterfaceCM.png')" x="120" y="104"/>
+		<s:Button click="button_clickHandler_17()" id="button33" includeIn="coursManagementIT" skinClass="components.Button37" x="666" y="117"/>
+		<s:Button click="button_clickHandler_18()" id="button34" includeIn="coursManagementIT" skinClass="components.Button39" x="635" y="273"/>
+		<s:Button click="button_clickHandler_19()" id="button35" includeIn="coursManagementIT" skinClass="components.Button38" x="142" y="273"/>
+	</fx:DesignLayer>
+	
+	<fx:DesignLayer d:userLabel="missionsDisponible">
+		<s:BitmapImage id="bitmapimage26" includeIn="missionAquakaPresentation,missionCitronvertPresentation,missionHaribokPresentation,missionToutenkamionPresentation,missionXFlowerPresentation,missionsBanquePresentation,missionsDisponible,missionsHopitalPresentation" d:locked="true" smooth="true" source="@Embed('/assets/images/backgroundsamediflou.png')" x="0" y="0"/>
+		<s:Rect height="384" id="rect1" includeIn="missionAquakaPresentation,missionCitronvertPresentation,missionHaribokPresentation,missionToutenkamionPresentation,missionXFlowerPresentation,missionsBanquePresentation,missionsDisponible,missionsHopitalPresentation" d:locked="true" radiusX="10" width="581" x="108.5" y="118.5">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="#5380D0" joints="miter" miterLimit="4" weight="1"/>
+			</s:stroke>
+			<s:fill>
+				<s:SolidColor color="#FFFFFF"/>
+			</s:fill>
+		</s:Rect>
+		<s:BitmapImage alpha="1" id="bitmapimage28" includeIn="missionAquakaPresentation,missionCitronvertPresentation,missionHaribokPresentation,missionToutenkamionPresentation,missionXFlowerPresentation,missionsBanquePresentation,missionsDisponible,missionsHopitalPresentation" d:locked="true" smooth="true" source="@Embed('/assets/images/InterfaceMission2.png')" x="99" y="110"/>
+		<s:Button click="button_clickHandler_6()" id="button36" includeIn="missionAquakaPresentation,missionCitronvertPresentation,missionHaribokPresentation,missionToutenkamionPresentation,missionXFlowerPresentation,missionsBanquePresentation,missionsDisponible,missionsHopitalPresentation" skinClass="components.Button40" x="646" y="130"/>
+	</fx:DesignLayer>
+	
+	<fx:DesignLayer d:userLabel="exam">
+		<s:BitmapImage includeIn="exam,examAchatQ1,examAchatQ2,examAchatQ3,examAchatQ4,examCentraQ1,examCentraQ2,examCentraQ3,examDemaQ1,examDemaQ2,examDemaQ3,examRecyclQ1,examRecyclQ2,examRecyclQ3,examRecyclQ4,examRenouQ1,examRenouQ2,examRenouQ3,examRenouQ4,examSensiQ1,examSensiQ2,examSensiQ3,examSensiQ4,examSoftQ1,examSoftQ2,examSoftQ3,examSoftQ4,examTeletravailQ1,examTeletravailQ2,examTeletravailQ3,examTeletravailQ4,examVirtuQ1,examVirtuQ2,examVirtuQ3,examVirtuQ4" d:locked="true" smooth="true" source="@Embed('/assets/images/backgroundsamediflou.png')" x="0" y="0"/>
+		<s:BitmapImage includeIn="exam,examAchatQ1,examAchatQ2,examAchatQ3,examAchatQ4,examCentraQ1,examCentraQ2,examCentraQ3,examDemaQ1,examDemaQ2,examDemaQ3,examRecyclQ1,examRecyclQ2,examRecyclQ3,examRecyclQ4,examRenouQ1,examRenouQ2,examRenouQ3,examRenouQ4,examSensiQ1,examSensiQ2,examSensiQ3,examSensiQ4,examSoftQ1,examSoftQ2,examSoftQ3,examSoftQ4,examTeletravailQ1,examTeletravailQ2,examTeletravailQ3,examTeletravailQ4,examVirtuQ1,examVirtuQ2,examVirtuQ3,examVirtuQ4" d:locked="true" smooth="true" source="@Embed('/assets/images/GreenExam.png')" x="113" y="33"/>
+		<s:BitmapImage includeIn="exam,examAchatQ1,examAchatQ2,examAchatQ3,examAchatQ4,examCentraQ1,examCentraQ2,examCentraQ3,examDemaQ1,examDemaQ2,examDemaQ3,examRecyclQ1,examRecyclQ2,examRecyclQ3,examRecyclQ4,examRenouQ1,examRenouQ2,examRenouQ3,examRenouQ4,examSensiQ1,examSensiQ2,examSensiQ3,examSensiQ4,examSoftQ1,examSoftQ2,examSoftQ3,examSoftQ4,examTeletravailQ1,examTeletravailQ2,examTeletravailQ3,examTeletravailQ4,examVirtuQ1,examVirtuQ2,examVirtuQ3,examVirtuQ4" d:locked="true" smooth="true" source="@Embed('/assets/images/RondSeul.png')" x="232" y="407"/>
+		<s:Button includeIn="exam,examAchatQ1,examAchatQ2,examAchatQ3,examAchatQ4,examCentraQ1,examCentraQ2,examCentraQ3,examDemaQ1,examDemaQ2,examDemaQ3,examRecyclQ1,examRecyclQ2,examRecyclQ3,examRecyclQ4,examRenouQ1,examRenouQ2,examRenouQ3,examRenouQ4,examSensiQ1,examSensiQ2,examSensiQ3,examSensiQ4,examSoftQ1,examSoftQ2,examSoftQ3,examSoftQ4,examTeletravailQ1,examTeletravailQ2,examTeletravailQ3,examTeletravailQ4,examVirtuQ1,examVirtuQ2,examVirtuQ3,examVirtuQ4" skinClass="components.Button41" x="409" y="520"/>
+	</fx:DesignLayer>
+	
+	<fx:DesignLayer d:userLabel="missionBanque1">
+		<s:BitmapImage includeIn="missionBanque1" smooth="true" source="@Embed('/assets/images/Banque1.png')" x="0" y="0" d:locked="true"/>
+		<s:Button includeIn="missionBanque1" skinClass="components.Button42" x="608" y="192" click="button_clickHandler_20()" id="button37"/>
+		<s:Button includeIn="missionBanque1" skinClass="components.Button43" x="653" y="372" click="button_clickHandler_21()" id="button38"/>
+		<s:Button includeIn="missionBanque1" skinClass="components.Button46" x="343" y="75" click="button_clickHandler_24()" id="button41"/>
+		<s:Button includeIn="missionBanque1" skinClass="components.Button45" x="77" y="179" click="button_clickHandler_23()" id="button40"/>
+		<s:Button includeIn="missionBanque1" skinClass="components.Button44" x="6" y="354" click="button_clickHandler_22()" id="button39"/>
+	</fx:DesignLayer>
+	
+	<mx:TabNavigator includeIn="missionsBanquePresentation" x="124.7" y="164.35" width="547" height="324">
+		<s:NavigatorContent label="Présentation" width="100%" height="100%">
+			<s:Label x="29" y="58" text="Secteur d’activité :  " textDecoration="underline" width="103"/>
+			<s:Label x="175" y="58" width="141" height="17" text="Financier, 234 employés"/>
+			<s:Label x="29" y="83" text="Nom du représentant : " textDecoration="underline" verticalAlign="top"/>
+			<s:Label x="175" y="83" text="M. Tifilou"/>
+			<mx:Image x="422" y="10" source="@Embed('assets/images/Banque.png')"/>
+			<s:Label x="194" y="10" text="Banque CreditGreen&#xd;" fontSize="15" fontWeight="bold"/>
+		</s:NavigatorContent>
+		<s:NavigatorContent label="Mission 1" width="100%" height="100%">
+			<s:Label x="29" y="21" text="Type de mission :" textDecoration="underline"/>
+			<s:Label x="29" y="48" text="Compétence : " textDecoration="underline"/>
+			<s:Label x="29" y="78" text="Nom de mission : " textDecoration="underline"/>
+			<s:Label x="29" y="106" text="Problématique : " textDecoration="underline"/>
+			<s:Label x="29" y="236" text="Difficulté : " textDecoration="underline"/>
+			<s:Label x="162" y="21" text="Sensibilisation et formation&#xd;"/>
+			<s:Label x="160" y="50" text="Formation et sensibilisation des employés&#xd;"/>
+			<s:Label x="161" y="81" text="Le chemin vers la Green sagesse.&#xd;"/>
+			<s:RichText x="161" y="110" text="La banque est au fond du gouffre, aidez nous à protéger notre capital.Nos employés ne cessent de jeter l’argent par les fenêtres et tout cela à nos frais ! Il va être temps de sévir !Votre mission sera de valoir votre esprit de formateur et de remédier à ce gâchis! &#xd;&#xd;" width="314" height="75"/>
+			<s:Label x="161" y="236" text="moyen&#xd;"/>
+			<s:Button x="395" y="234" label="Acceder à la mission" enabled="true" click="button2_clickHandler(event)"/>
+		</s:NavigatorContent>
+		<s:NavigatorContent label="Mission 2" width="100%" height="100%">
+			<s:Label x="29" y="21" text="Type de mission :" textDecoration="underline"/>
+			<s:Label x="29" y="48" text="Compétence : " textDecoration="underline"/>
+			<s:Label x="29" y="78" text="Nom de mission : " textDecoration="underline"/>
+			<s:Label x="29" y="106" text="Problématique : " textDecoration="underline"/>
+			<s:Label x="29" y="236" text="Difficulté : " textDecoration="underline"/>
+			<s:Label x="162" y="21" text="Amélioration de la gestion d’énergie"/>
+			<s:Label x="160" y="50" text="Virtualisation, Télétravail"/>
+			<s:Label x="161" y="81" text="Enfer dans les salles !"/>
+			<s:RichText x="161" y="110" text="Il fait trop chaud ! Les salles  sont remplies d’ordinateurs et d’appareils de tout genre qui nous rendent tous fous !!! M. Tifilou cherche un expert Green IT pour remédier à ses maux de chaleur tout en gardant la banque fonctionnelle.&#xd;&#xd;" width="314" height="65"/>
+			<s:Label x="161" y="236" text="facile"/>
+			<s:Button x="395" y="234" label="Acceder à la mission" enabled="false"/>
+		</s:NavigatorContent>	
+	</mx:TabNavigator>
+	<mx:TabNavigator includeIn="missionAquakaPresentation,missionCitronvertPresentation,missionHaribokPresentation,missionToutenkamionPresentation,missionXFlowerPresentation" x="124.7" y="164.35" width="547" height="324">
+		<s:NavigatorContent label="Présentation" width="100%" height="100%">
+			<s:Label x="29" y="58" text="Secteur d’activité :  " textDecoration="underline" width="103"/>
+			<s:Label x="175" y="58" width="141" height="17" text.missionXFlowerPresentation="Paysagiste, 7 employés&#xd;" text.missionToutenkamionPresentation="Location de camions, 15 employés" width.missionToutenkamionPresentation="207" text.missionHaribokPresentation="Agro-Alimentaire" text.missionCitronvertPresentation="Energie (100 employés) Entreprise exploitant une nouvelle source d'energie : le CITRON VERT :)  " width.missionCitronvertPresentation="360" height.missionCitronvertPresentation="27" text.missionAquakaPresentation="Tourisme, Culturel, 30 Employés" width.missionAquakaPresentation="193"/>
+			<s:Label x="29" y="83" text="Nom du représentant : " textDecoration="underline" verticalAlign="top" x.missionCitronvertPresentation="29" y.missionCitronvertPresentation="90"/>
+			<s:Label x="175" y="83" text.missionXFlowerPresentation="Mme. Florizarde" text.missionToutenkamionPresentation="M. LELOUR " text.missionHaribokPresentation="M. Draginov " text.missionCitronvertPresentation="M. Peck " x.missionCitronvertPresentation="175" y.missionCitronvertPresentation="90" text.missionAquakaPresentation="M. Poul"/>
+			<mx:Image source.missionXFlowerPresentation="@Embed('assets/images/Fleuriste.png')" x.missionXFlowerPresentation="413" y.missionXFlowerPresentation="31" source.missionToutenkamionPresentation="@Embed('assets/images/Toutenkamion.png')" x.missionToutenkamionPresentation="413" y.missionToutenkamionPresentation="31" source.missionHaribokPresentation="@Embed('assets/images/Haribok.png')" x.missionHaribokPresentation="417" y.missionHaribokPresentation="19" source.missionCitronvertPresentation="@Embed('assets/images/Citronvert.png')" x.missionCitronvertPresentation="323" y.missionCitronvertPresentation="105" source.missionAquakaPresentation="@Embed('assets/images/PiscineAquarium.png')" x.missionAquakaPresentation="351" y.missionAquakaPresentation="10"/>
+			<s:Label x="194" y="10" fontSize="15" fontWeight="bold" text.missionXFlowerPresentation="XFlower" text.missionToutenkamionPresentation="Toutenkamion" text.missionHaribokPresentation="Haribok" text.missionCitronvertPresentation="Citron vert" text.missionAquakaPresentation="Aquaka"/>
+			<s:Label includeIn="missionHaribokPresentation" x="29" y="108" text="Description :" textDecoration="underline"/>
+			<s:Label includeIn="missionHaribokPresentation" x="175" y="120" text="200 employés, connu pour ses bonbons &quot;des rois &quot; "/>
+		</s:NavigatorContent>
+		<s:NavigatorContent label="Mission 1" width="100%" height="100%">
+			<s:Label x="29" y="21" text="Type de mission :" textDecoration="underline"/>
+			<s:Label x="29" y="48" text="Compétence : " textDecoration="underline"/>
+			<s:Label x="29" y="78" text="Nom de mission : " textDecoration="underline" includeIn="missionAquakaPresentation,missionCitronvertPresentation,missionToutenkamionPresentation,missionXFlowerPresentation"/>
+			<s:Label x="29" y="106" text="Problématique : " textDecoration="underline"/>
+			<s:Label x="29" y="236" text="Difficulté : " textDecoration="underline"/>
+			<s:Label x="162" y="21" text.missionXFlowerPresentation="null" text.missionToutenkamionPresentation="null" text.missionHaribokPresentation="Amélioration logiciel de gestion de l'énergie, Mission de pédagogie sur le Green IT pour le personnel" width.missionHaribokPresentation="373" text.missionCitronvertPresentation="null" text.missionAquakaPresentation="Mise en place de règles d’achats"/>
+			<s:Label x="160" y="50" text.missionXFlowerPresentation="Réduction volume d’impression, Dématérialisation" text.missionToutenkamionPresentation="Développement d'un logiciel permettant d'optimiser le trajet des camions en fonction du CO2 , de l'essence , sensibilisation du personnel au Green IT" x.missionToutenkamionPresentation="162" y.missionToutenkamionPresentation="35" width.missionToutenkamionPresentation="376" height.missionToutenkamionPresentation="43" text.missionHaribokPresentation="Installation &amp; Config de greens logiciels (type CO2 saver) et une structure de supervision d'optimisation d'énergie (type AVOB), formation du personnel à l'IT green" x.missionHaribokPresentation="163" y.missionHaribokPresentation="54" width.missionHaribokPresentation="372" text.missionCitronvertPresentation="Logiciel de gestion d’énergie, dématérialisation des supports papiers, installation de Green server " width.missionCitronvertPresentation="375" text.missionAquakaPresentation="Plan d’achat"/>
+			<s:Label x="161" y="81" text.missionXFlowerPresentation="Sauvons les forêts !!" text.missionToutenkamionPresentation="null" includeIn="missionAquakaPresentation,missionCitronvertPresentation,missionToutenkamionPresentation,missionXFlowerPresentation" text.missionCitronvertPresentation="null" text.missionAquakaPresentation="Le respect de toute chose est important"/>
+			<s:RichText x="161" y="110" width="374" height="115" text.missionXFlowerPresentation="Tous les jours des arbres sont détruits !!! C’est inacceptable !!! Malgré tout, il faut avouer qu’on ne peut se passer de papier dans la vie de tous les jours. XFlower s’engage à respecter la nature du mieux possible en limitant le nombre de papier utilisé." text.missionToutenkamionPresentation="Des taxes encore des taxes ! les politiques de GreenVille ont encore voté une nouvelle taxe supplémentaire sur le CO2, ces taxes sont maintenant une réelle spoliation. Mr LELOUR cherche un Green IT expert afin d'optimiser l'organisation des voyages de ses camions et ainsi de réduire les dépenses de CO2." text.missionHaribokPresentation="Le dernier rapport énergétique a été accablant, l'entreprise consomme beaucoup trop d'électricité, l'image de marque d'entreprise écocitoyenne risque d'en prendre un coup si rien n'est fait ! Mr Draginov cherche ainsi un expert en Green IT qui lui permettrait de réduire efficacement la consommation d'énergie et de sensibiliser ses employés." text.missionCitronvertPresentation="L'avenir c'est le citron !!!! Nos scientifiques ont réussi à extraire une quantité extraordinaire d'énergie des citrons verts ! afin de satisfaire nos partenaires et avoir une image écocitoyenne parfaite nous voulons aussi être à la pointe de l'écologie dans le domaine de l'informatique ! Que se soit nos Serveur ou nos ordinateurs &quot;perso&quot; et de l'organisation IT ! TOUT TOUT TOUT doit être green, je compte sur vous ! Yes you can !" text.missionAquakaPresentation="Nos fournisseurs et employés font la loi, il est temps que cela cesse !Vous aurez pour mission de mettre en place un plan d’achat demandant aux fournisseurs de respecter les normes environnementales.  De plus nos employés font énormément de gachis et cela est intolérable, nous ne sommes plus des enfants !"/>
+			<s:Label x="161" y="236" text.missionXFlowerPresentation="facile" text.missionToutenkamionPresentation="Moyenne" text.missionHaribokPresentation="facile" text.missionCitronvertPresentation="difficile" text.missionAquakaPresentation="moyen"/>
+			<s:Button x="395" y="234" label="Acceder à la mission" enabled="false"/>
+		</s:NavigatorContent>
+	</mx:TabNavigator>
+	<mx:TabNavigator includeIn="missionsHopitalPresentation" x="124.7" y="164.35" width="547" height="324">
+		<s:NavigatorContent label="Présentation" width="100%" height="100%">
+			<mx:Image x="427" y="25" source="@Embed('assets/images/Hopital.png')"/>
+			<s:Label x="29" y="58" text="Secteur d’activité :  " textDecoration="underline" width="103"/>
+			<s:Label x="175" y="58" width="141" height="17" text="Santé, 76 employés"/>
+			<s:Label x="29" y="83" text="Nom du représentant : " textDecoration="underline" verticalAlign="top"/>
+			<s:Label x="175" y="83" text="Mme. Maboul"/>
+			<s:Label x="194" y="10" text="Hopital" fontSize="15" fontWeight="bold"/>
+		</s:NavigatorContent>
+		<s:NavigatorContent label="Mission 1" width="100%" height="100%">
+			<s:Label x="29" y="21" text="Type de mission :" textDecoration="underline"/>
+			<s:Label x="29" y="48" text="Compétence : " textDecoration="underline"/>
+			<s:Label x="29" y="78" text="Nom de mission : " textDecoration="underline"/>
+			<s:Label x="29" y="106" text="Problématique : " textDecoration="underline"/>
+			<s:Label x="29" y="236" text="Difficulté : " textDecoration="underline"/>
+			<s:Label x="162" y="21" text="Amélioration du système informatique"/>
+			<s:Label x="160" y="50" text="Renouvellement du parc informatique"/>
+			<s:Label x="161" y="81" text="L’hôpital demande la charité."/>
+			<s:RichText x="161" y="110" text="L’assurance de nos malades ne suffit plus à couvrir toutes les dépenses de notre système informatiques. Nous avons tout essayé, virer des employés, abandonner les patients à leur triste sort, mentir aux proches des victimes pour de plus gros traitement, rien n’y fait !Mr. Tifilou, responsable de la banque et ami de longue date, m’a parlé de vos exploits et pense que vous pourrez nous être d’une aide précieuse." width="314" height="122"/>
+			<s:Label x="161" y="236" text="moyen"/>
+			<s:Button x="395" y="234" label="Acceder à la mission" enabled="false"/>
+		</s:NavigatorContent>
+		<s:NavigatorContent label="Mission 2" width="100%" height="100%">
+			<s:Label x="29" y="21" text="Type de mission :" textDecoration="underline"/>
+			<s:Label x="29" y="48" text="Compétence : " textDecoration="underline"/>
+			<s:Label x="29" y="78" text="Nom de mission : " textDecoration="underline"/>
+			<s:Label x="29" y="106" text="Problématique : " textDecoration="underline"/>
+			<s:Label x="29" y="236" text="Difficulté : " textDecoration="underline"/>
+			<s:Label x="162" y="21" text="Amélioration du partage des fichiers"/>
+			<s:Label x="160" y="50" text="Centralisation de fichier"/>
+			<s:Label x="161" y="81" text="Sauvons des vies ensemble !"/>
+			<s:RichText x="161" y="110" text="Le temps d’accès à nos dossiers est trop lent !Nos patients meurent les uns après les autres, nous avons besoins de vous pour les sauver !Aidez nous à sauver des vies s’il vous plait !" width="314" height="65"/>
+			<s:Label x="161" y="236" text="normale"/>
+			<s:Button x="395" y="234" label="Acceder à la mission" enabled="false"/>
+		</s:NavigatorContent>
+	</mx:TabNavigator>
+	<s:Label includeIn="missionsDisponible" x="176" y="248" text="Le chemin vers la Green sagesse." fontWeight="bold" fontSize="15" backgroundColor="#FFFFFF" backgroundAlpha="0.29"/>
+	<s:Button includeIn="missionsDisponible" x="426" y="242" label="Acceder à la mission" click="button1_clickHandler(event)"/>
+	<s:Button includeIn="missionBanque1" x="21" y="10" label="Sortir" click="button3_clickHandler(event)"/>
+	<s:Button includeIn="missionBanque1" x="667" y="11" label="Valider la mission" enabled="false"/>
+	<s:TextArea includeIn="coursDematerialisation1" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursDematerialisation1" x="233" y="130" text="Dématérialisation du papier :" width="186" fontWeight="bold" textDecoration="underline"/>
+	<s:Label includeIn="coursDematerialisation1" x="233" y="150" text="Au-delà de l’optimisation de la gestion de l’énergie des imprimantes, le secret pour réduire les consommations dues à l’impression est simplement de réduire le nombre d’impressions. En effet la consommation en impression est importante. " width="368" height="57"/>
+	<s:Label includeIn="coursDematerialisation1" x="233" y="215" text="La dématérialisation des échanges en société :"/>
+	<s:Label includeIn="coursDematerialisation1" x="239" y="235" text="- Externalisation des fax : Emettre et recevoir les fax par mail" width="352" height="20"/>
+	<s:Label includeIn="coursDematerialisation1" x="239" y="252" text="- Externalisation de la consommation : Stockage des données sur serveurs ou stockage externe sur des CDs par exemple" width="362"/>
+	<s:Label includeIn="coursDematerialisation1" x="239" y="286" text="- Dématérialisation des supports de stockage : (solution la moins coûteuse, la meilleure pour l’environnement et la moins difficile à mettre en place) Stockage des données sur disque dure. Le format de stockage le plus répandu est le PDF, les formats de fichiers modifiables sont à éviter." height="71" width="380"/>
+	<s:Label includeIn="coursDematerialisation1" x="239" y="365" text="Il est de nos jours possible de dématérialiser nous-mêmes nos documents, il est également possible de sous-traiter cette activité à des sociétés qui fourniront une solution clé en main et sécurisée." width="332"/>
+	<s:Label includeIn="coursDematerialisation1" x="559" y="465" text="1/3&#xd;"/>
+	<s:TextArea includeIn="coursDematerialisation2" x="217" y="126" width="395" height="369">
+	</s:TextArea>
+	<s:Label x="559" y="465" text="2/3&#xd;" includeIn="coursDematerialisation2"/>
+	<s:Label includeIn="coursDematerialisation2" x="231" y="137" text="Les solutions d’économie de l’impression :" fontWeight="bold"/>
+	<s:Label includeIn="coursDematerialisation2" x="231" y="157" text="Relire un document sur écran nécessite une connaissance de l’outil informatique qui permettra à l’individu de ne pas systématiquement imprimer ses documents. Affichage en plein écran, division de la page pour comparaison de documents, utilisation du suivi des modifications pour les relectures… Du point de vue utilisateur une sensibilisation est donc à faire sur l’utilisation de l’impression. Les moyens de contrôler et réduire les impressions sont les suivants :" width="366"/>
+	<s:Label includeIn="coursDematerialisation2" x="231" y="278" text="- Installation de logiciel d’aide à l’impression : solution peu coûteuse mais peu avantageuse" width="366"/>
+	<s:Label includeIn="coursDematerialisation2" x="231" y="312" text="- Le travail partagé sur les documents : Mise à jour des documents facilités, envoie des documents par mail, gain de place sur les espaces de stockage" width="366"/>
+	<s:Label includeIn="coursDematerialisation2" x="231" y="361" text="- Apprendre à gérer ses impressions : Privilégier l’impression recto/verso, deux pages en une, etc…" width="366"/>
+	<s:TextArea includeIn="coursDematerialisation3" x="217" y="126" width="395" height="369"/>
+	<s:Label x="559" y="465" text="3/3&#xd;" includeIn="coursDematerialisation3"/>
+	<s:Label includeIn="coursDematerialisation3" x="230" y="138" text="Connaissez-vous le coût de traitement d’une facture papier ?" fontWeight="bold"/>
+	<s:Label includeIn="coursDematerialisation3" x="230" y="158" text="Selon une enquête BVA, le coût moyen estimé de traitement d’une facture sur l’ensemble du processus est en moyenne de 26 euros (17 euros à la charge de l’acheteur et 9 euros pour l’émetteur)" width="372"/>
+	<s:Label includeIn="coursDematerialisation3" x="230" y="220" text="On estime que le coût de traitement de la facture dématérialisée est divisé par 2 par rapport à la facture papier." width="372"/>
+	<s:TextArea includeIn="coursRecyclage1" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursRecyclage1" x="237" y="137" text="Le recyclage en Entreprise :" fontWeight="bold" textDecoration="underline"/>
+	<s:Label includeIn="coursRecyclage1" x="233" y="163" text="La gestion et le recyclage du papier dans l'entreprise est un enjeu écologique majeur.La collecte et le recyclage papier est une solution simple pour une consommation plus respectueuse de l'environnement. Aujourd'hui 80% des papiers de bureaux sont détruits en décharge ou par incinération alors que la production de papier à partir de papier usagé permet de consommer 200 fois moins d'eau et 3 fois moins d'énergie. Il est donc indispensable d'agir en mettant en place dans votre entreprise la collecte et le recyclage papier." width="365"/>
+	<s:Label includeIn="coursRecyclage1" x="233" y="298" text="Quels intérêts ?"/>
+	<s:Label includeIn="coursRecyclage1" x="233" y="311" text="Le recyclage du papier permet à l'entreprise :"/>
+	<s:Label includeIn="coursRecyclage1" x="250" y="331" text="- de réduire son impact environnemental"/>
+	<s:Label includeIn="coursRecyclage1" x="250" y="351" text="- de créer de nouveaux emplois souvent issus de l'économie solidaire" width="349"/>
+	<s:Label includeIn="coursRecyclage1" x="250" y="385" text="- d'être en conformité avec la loi de 1992 qui oblige les entreprises à valoriser leurs papier et cartons" width="349"/>
+	<s:Label includeIn="coursRecyclage1" x="250" y="419" text="- un bon moyen de sensibiliser ses collaborateurs aux enjeux du développement durable et de développer votre image en interne" width="360"/>
+	<s:Label includeIn="coursRecyclage1" x="567" y="466" text="1/2&#xd;"/>
+	<s:TextArea includeIn="coursRecyclage2" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursRecyclage2" x="236" y="153" text="Comment organiser la collecte et le recyclage du papier ?"/>
+	<s:Label includeIn="coursRecyclage2" x="260" y="173" text="- Par l'organisation d'un programme de recyclage : information des salariés, gestes quotidiens pour réduire la production de déchets" width="337"/>
+	<s:Label includeIn="coursRecyclage2" x="260" y="222" text="- Par l'installation de bacs de collecte sélectifs"/>
+	<s:Label includeIn="coursRecyclage2" x="260" y="242" text="- Par le choix d'un prestataire qualifié dans la collecte"/>
+	<s:Label includeIn="coursRecyclage2" x="565" y="469" text="2/2&#xd;"/>
+	<s:TextArea includeIn="coursVirtualisation1" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursVirtualisation1" x="234" y="137" text="La virtualisation :" fontWeight="bold" textDecoration="underline"/>
+	<s:Label includeIn="coursVirtualisation1" x="234" y="157" text="La consommation d'énergie des serveurs informatiques ne cesse d'augmenter. La consommation électrique des équipements informatiques a doublé en 5 ans et les études montrent que la tendance s'accélère." width="378"/>
+	<s:Label includeIn="coursVirtualisation1" x="234" y="220" text="La direction informatique se retrouve ainsi au centre de nouveaux enjeux du développement durable et en particulier la question de l'efficacité énergétique de leurs serveurs et ordinateurs." width="366" fontWeight="normal"/>
+	<s:Label includeIn="coursVirtualisation1" x="234" y="269" text="Qu'est-ce que la virtualisation ?" textDecoration="underline"/>
+	<s:Label includeIn="coursVirtualisation1" x="234" y="289" text="La virtualisation consiste à pouvoir faire fonctionner plusieurs systèmes d'exploitation simultanément sur une seule machine au lieu de plusieurs machines." width="360"/>
+	<s:Label includeIn="coursVirtualisation1" x="234" y="338" text="Les enjeux énergétiques " textDecoration="underline"/>
+	<s:Label includeIn="coursVirtualisation1" x="234" y="358" text="La part de la facture électrique représente 10% du coût de fonctionnement d'un centre de données. Elle pourrait s'élever très rapidement à 50% en l'absence de changements." width="366"/>
+	<s:Label includeIn="coursVirtualisation1" x="234" y="407" text="• Selon une étude IDC, d'ici 2012 pour 1$ investit dans le hardware, 1$ d'énergie sera dépensé." width="366"/>
+	<s:Label includeIn="coursVirtualisation1" x="234" y="441" text="• Parallèlement à ces risques énergétiques, les émissions de CO2 devraient sensiblement augmenter au détriment de la politique d'éco responsabilité de l'entreprise." width="360"/>
+	<s:Label includeIn="coursVirtualisation1" x="568" y="470" text="1/3&#xd;"/>
+	<s:TextArea includeIn="coursVirtualisation2" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursVirtualisation2" x="231" y="137" text="• Pour répondre à ces nouveaux enjeux, la virtualisation des serveurs est une réponse efficace." width="369"/>
+	<s:Label includeIn="coursVirtualisation2" x="231" y="171" text="Quels sont les apports de la virtualisation ?" textDecoration="underline"/>
+	<s:Label includeIn="coursVirtualisation2" x="231" y="191" text="• Jusqu'à 80% de réduction des coûts d'énergie"/>
+	<s:Label includeIn="coursVirtualisation2" x="231" y="211" text="• Un niveau de service accru par une meilleure optimisation des serveurs" width="369"/>
+	<s:Label includeIn="coursVirtualisation2" x="230" y="242" text="• La réduction de son impact environnemental"/>
+	<s:Label includeIn="coursVirtualisation2" x="230" y="262" text="Le logiciel de virtualisation le plus utilisé est : VmWare Workstation"/>
+	<s:Label includeIn="coursVirtualisation2" x="230" y="278" text="Utilisation d’un client léger" textDecoration="underline"/>
+	<s:Label includeIn="coursVirtualisation2" x="230" y="298" text="Il existe une méthode simple et efficace pour alléger l’énergie l’aide de clients légers." width="365"/>
+	<s:Label includeIn="coursVirtualisation2" x="230" y="332" text="Rappelle d’un client léger :" textDecoration="underline"/>
+	<s:Label includeIn="coursVirtualisation2" x="230" y="352" text="Un client léger, est une machine virtuelle dont les performances sont limitées de sorte que les employées de l'entreprise peuvent travailler sans rencontrer de problèmes." width="365"/>
+	<s:Label includeIn="coursVirtualisation2" x="230" y="401" text="L’utilisation de cette technologie va donc réduire des coûts matériels, d'énergie  et de permettre un gain  de temps à l'entreprise." width="360"/>
+	<s:Label includeIn="coursVirtualisation2" x="568" y="470" text="2/3&#xd;"/>
+	<s:TextArea includeIn="coursVirtualisation3" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursVirtualisation3" x="234" y="137" text="Du fait que les machines seront virtuelles (non physiques), les coûts matériels se verront donc diminuer et n’oublions pas qu’un client léger consomme très peu d’énergie au regard d’un poste de travail traditionnel qui embarque de nombreux composants inutiles à un usage métier. La mise en place d’une solution de virtualisation du poste de travail peut faire diminuer la consommation d’un poste de travail de plus de 40 %. " width="360"/>
+	<s:Label includeIn="coursVirtualisation3" x="234" y="243" text="La notion de gain peut se noter par le fait que le déploiement d’une telle machine peut se faire en quelques minutes au lieu de plusieurs heures. Le déploiement ne nécessitera pas de déplacement de personne physique, car il est réalisable à distance, et de plus le fait de monter un client léger permet d'éviter des erreurs de manipulations puisqu'ils peuvent être enregistrés en tant qu'image (machine déjà installée, avec une pré-configuration effectuée et sauvegardés à un instant T)." width="360"/>
+	<s:Label includeIn="coursVirtualisation3" x="562" y="470" text="3/3"/>
+	<s:TextArea includeIn="coursTeletravail1" x="217" y="126" width="395" height="369" borderVisible="true"/>
+	<s:Label includeIn="coursTeletravail1" x="237" y="137" text="Le télétravail :" fontWeight="bold" textDecoration="underline"/>
+	<s:Label includeIn="coursTeletravail1" x="237" y="157" text="Le télétravail consiste à travailler à distance, grâce à des nouvelles technologies d’information. En pratique, les employés se réservent un bureau dans leur maison ou dans un « bureau de proximité partagé », ou travaillent de façon nomade. Cette mise en place demande des aménagements et une préparation spécifiques." width="366"/>
+	<s:Label includeIn="coursTeletravail1" x="237" y="249" text="En France où le télétravail doit être volontaire (accord individuel contractualisé) et non imposé par l'employeur, le ministère de l'emploi estimait en 2004 que 2% de salariés le pratiquaient à domicile, et 5% de façon nomade." width="366"/>
+	<s:Label includeIn="coursTeletravail1" x="237" y="311" text="Pourquoi le télétravail ?"/>
+	<s:Label includeIn="coursTeletravail1" x="259" y="331" text="- Désengorger la circulation."/>
+	<s:Label includeIn="coursTeletravail1" x="259" y="351" text="- Réduire notre consommation d’essence et nos rejets de CO2, bien que certains modes de communication comme la visioconférence ou l’utilisation d’ordinateurs consomment de l’énergie." width="344"/>
+	<s:Label includeIn="coursTeletravail1" x="259" y="414" text="- Diminuer la surface des bureaux dans l’entreprise (et les services annexes comme le chauffage). Cependant, une pièce annexe doit être trouvée chez soi ou dans un bureau collectif." width="344"/>
+	<s:Label includeIn="coursTeletravail1" x="571" y="473" text="1/2&#xd;"/>
+	<s:TextArea includeIn="coursTeletravail2" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursTeletravail2" x="264" y="143" text="- Supprimer le temps de transport, pour donner plus de temps aux hobbies, à la vie personnelle et au sommeil." width="339"/>
+	<s:Label includeIn="coursTeletravail2" x="263" y="181" text="- Encourager la responsabilisation du salarié. L’employé gère ses horaires tout seul, mais ce mode de management doit être encadré pour ne pas interférer avec la vie personnelle et être efficace." width="340"/>
+	<s:Label includeIn="coursTeletravail2" x="263" y="244" text="- Inciter à apprendre de nouveaux outils collaboratifs, comme xDSL, Business Everywhere, Internet Everywhere, technologie mobile 3G, wifi, etc." width="340"/>
+	<s:Label includeIn="coursTeletravail2" x="263" y="293" text="- Eviter la propagation d’épidémie (actuellement, les Plans de continuité d’activité des principales entreprises françaises incluent cette option)." width="340"/>
+	<s:Label includeIn="coursTeletravail2" x="263" y="342" text="Attention, car le télétravail peut entrainer un sentiment d’isolement, un stress et une mauvaise distinction entre vie familiale et vie professionnelle. Il doit être formé et suivi pour être efficace." width="340"/>
+	<s:Label includeIn="coursTeletravail2" x="571" y="472" text="2/2&#xd;"/>
+	<s:TextArea includeIn="coursSoftware1" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursSoftware1" x="234" y="136" text="Les Softwares qui peuvent aider à mieux gérer les économies d’énergies" width="382" fontWeight="bold" textDecoration="underline"/>
+	<s:Label includeIn="coursSoftware1" x="234" y="170" text="La gestion énergétique du parc informatique pilotée par logiciel est désormais un outil essentiel dans la démarche de développement durable de l'entreprise. " width="368"/>
+	<s:Label includeIn="coursSoftware1" x="234" y="219" text="Le matériel informatique est toujours plus puissant et la consommation électrique du parc de PC ne cesse d'augmenter.  Dans un contexte d'accroissement du coût de l'énergie, cette solution permet au DSI de mettre en avant des économies d'énergie et donc financières très importantes et de participer ainsi à limiter les émissions de gaz à effet de serre. " width="368"/>
+	<s:Label includeIn="coursSoftware1" x="234" y="311" text="DSI, responsable informatique connaissez-vous la consommation électrique de votre parc informatique ? " width="368"/>
+	<s:Label includeIn="coursSoftware1" x="234" y="345" text="L'utilisation d'un logiciel d'économie d'énergie du parc informatique permet d'économiser de 50 à 90% de la consommation électrique. Le retour sur investissement d'une telle solution est donc très rapide. " width="368"/>
+	<s:Label includeIn="coursSoftware1" x="570" y="472" text="1/3&#xd;"/>
+	<s:TextArea includeIn="coursSoftware2" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursSoftware2" x="232" y="203" text="Le contexte    " fontWeight="normal" textDecoration="underline"/>
+	<s:Label includeIn="coursSoftware2" x="249" y="223" text="• La grande majorité des utilisateurs n'avouent ne jamais éteindre leur PC le soir en quittant leur travail. Cette pratique est d'ailleurs souvent encouragée par la culture informatique." width="348"/>
+	<s:Label includeIn="coursSoftware2" x="249" y="272" text="• Un ordinateur en inactivité consomme pratiquement la même énergie qu'un ordinateur utilisé à pleine puissance. " width="348"/>
+	<s:Label includeIn="coursSoftware2" x="249" y="306" text="• La consommation d'un PC représente jusqu'à 150€ d'électricité par an. " width="348"/>
+	<s:Label includeIn="coursSoftware2" x="249" y="340" text="• Selon le Gartner, le parc utilisateur  (ordinateurs, imprimantes, réseau) est responsable de 53% de la consommation électrique du système d'information. " width="348"/>
+	<s:TextArea includeIn="coursSoftware3" x="217" y="126" width="395" height="369"/>
+	<s:Label x="229" y="212" text="Comment cela fonctionne ? " textDecoration="underline" includeIn="coursSoftware3"/>
+	<s:Label x="246" y="232" text="• Selon les profils définis, les alimentations des PCs sont optimisées pendant la présence des utilisateurs (mises en veille avec retour à l'écran de travail quand nécessaire, régulation de la puissance allouée...). " width="348" includeIn="coursSoftware3"/>
+	<s:Label x="246" y="295" text="• Gestion automatique de la mise sous tension en dehors des horaires d'utilisation. " width="348" includeIn="coursSoftware3"/>
+	<s:Label x="246" y="329" text="• Optimisation de la consommation électrique globale de votre parc pour ne pas dépasser votre forfait EDF. " width="348" includeIn="coursSoftware3"/>
+	<s:Label x="246" y="363" text="• Rapports d'analyse du parc : indicateurs financiers et d'émissions de CO2 selon les normes bilan carbone françaises. " width="348" includeIn="coursSoftware3"/>
+	<s:Label includeIn="coursSoftware2" x="565" y="473" text="2/3&#xd;"/>
+	<s:Label includeIn="coursSoftware3" x="562" y="473" text="3/3&#xd;"/>
+	<s:TextArea includeIn="coursSensibilisation1" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursSensibilisation1" x="237" y="137" text="Sensibilisation" textDecoration="underline" fontWeight="bold"/>
+	<s:Label includeIn="coursSensibilisation1" x="237" y="157" text="L'informatique est longtemps restée en dehors des préoccupations environnementales et des démarches de développement durable des entreprises. " width="348"/>
+	<s:Label includeIn="coursSensibilisation1" x="237" y="206" text="Pourtant, on découvre aujourd'hui à travers ce que l'on appelle le green IT  ou l'informatique verte que les TICs sont loin d'être sans impact. L'informatique consomme des quantités importantes d'énergie et cela de façon croissante, elle exploite de ressources naturelles de plus en plus rares et est un émetteur important de gaz à effet de serre. " width="348"/>
+	<s:Label includeIn="coursSensibilisation1" x="237" y="298" text="La direction informatique est donc un levier important mais mal exploité de la politique de développement durable. " width="348"/>
+	<s:Label includeIn="coursSensibilisation1" x="237" y="332" text="La démarche green IT permet au DSI et à la direction informatique de devenir un acteur incontournable de politique de développement durable de l'entreprise ou de la collectivité. " width="348"/>
+	<s:Label includeIn="coursSensibilisation1" x="237" y="381" text="Des leviers de réductions des coûts et de l'impact environnemental sont très rapidement révélés par la démarche green IT pour des résultats et un retour sur investissement rapide. " width="348"/>
+	<s:Label includeIn="coursSensibilisation1" x="563" y="472" text="1/2&#xd;"/>
+	<s:TextArea includeIn="coursSensibilisation2" x="217" y="126" width="395" height="369" borderVisible="true"/>
+	<s:Label includeIn="coursSensibilisation2" x="227" y="162" text="Les étapes de la démarche informatique verte: "/>
+	<s:Label includeIn="coursSensibilisation2" x="254" y="197" text="1. Phase de diagnostic : audit énergétique, bilan carbone de l'activité, diagnostics des usages et audit réglementaire " width="348"/>
+	<s:Label includeIn="coursSensibilisation2" x="254" y="231" text="2. Phase d'analyse et préconisation: identification des enjeux, définition d'objectifs d'amélioration et d'indicateurs, plan d'actions " width="348"/>
+	<s:Label includeIn="coursSensibilisation2" x="253" y="281" text="3. Phase d'actions : formation des collaborateurs, intégration des solutions, suivi et évaluation, communication. " width="348"/>
+	<s:Label includeIn="coursSensibilisation2" x="225" y="335" text="Malgré tout, le principal souci des entreprises dans leur quête d’informatique verte, c’est que leur politique écologique est trop souvent inconnue ou ignorées par les salariés. Sensibiliser les employées est une priorité majeure pour la réussite d’une politique Greent IT." width="377"/>
+	<s:Label includeIn="coursSensibilisation2" x="558" y="470" text="2/2&#xd;"/>
+	<s:TextArea includeIn="coursRenouvellement1" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursRenouvellement1" x="235" y="137" text="Renouvellement du parc  informatique" fontWeight="bold" textDecoration="underline"/>
+	<s:Label includeIn="coursRenouvellement1" x="235" y="157" text="Il existe deux moyens de renouveler son parc informatique. L’une des plus radicales mais plus coûteuse est d’acheter un nouveau parc. L’autre consiste à louer son matériel, cela permet d’avoir une plus grande flexibilité et avoir un renouvellement tous les deux ans. " width="348"/>
+	<s:Label includeIn="coursRenouvellement1" x="235" y="251" text="Acheter un nouveau parc" textDecoration="underline"/>
+	<s:Label includeIn="coursRenouvellement1" x="235" y="270" text="Les fabricants proposent aujourd’hui des gammes d’ordinateurs et de serveurs moins gourmands en électricité. Ne vous fiez pas forcément au prix d’achat « brut » du matériel, mais voyez à plus long terme en calculant sa consommation électrique. La plupart des ordinateurs et des serveurs économes en énergie sont labellisés. Privilégiez donc l’achat d’ordinateurs labellisés, vous serez sans aucun doute gagnant au bout du compte. " width="348"/>
+	<s:Label includeIn="coursRenouvellement1" x="235" y="391" text="En 2007, environ 109 millions d’ordinateurs certifiés Epeat ont été vendu à travers le monde. L’économie d’énergie liée à l’utilisation a été estimée à 42 milliards de kWh. Sur l’ensemble du cycle de vie de ces ordinateurs, une économie totale de 3,2 milliards de dollars pourra être réalisée. " width="348"/>
+	<s:Label includeIn="coursRenouvellement1" x="562" y="468" text="1/2&#xd;"/>
+	<s:TextArea includeIn="coursRenouvellement2" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursRenouvellement2" x="238" y="138" text="Autre astuce pour économiser de l’énergie : lors du renouvellement de votre parc, étudiez avec précision les besoins de chaque utilisateur. Tous vos collaborateurs n’ont pas forcément besoin d’ordinateurs ultra-puissants. Assurez-vous donc de bien définir l’adéquation utilisateur/ordinateur. " width="348"/>
+	<s:Label includeIn="coursRenouvellement2" x="238" y="215" text="Louez un parc d’ordinateurs" textDecoration="underline"/>
+	<s:Label includeIn="coursRenouvellement2" x="238" y="235" text="C’est l’autre solution pour réduire sa note d’énergie. Elle est particulièrement bien adaptée aux TPE/PME, puisqu’elle leur permet de garder leur capacité d’autofinancement. La location d’un parc informatique permet à l’entreprise d’avoir à sa disposition un matériel récent, le plus souvent moins gourmand en énergie, sans grever sa trésorerie. Le plus souvent, la maintenance informatique est comprise dans le prix de la location. La location permet aussi une plus grande flexibilité, puisque vous ne louez que le nombre de postes utilisés : en cas de départ de l’un de vos collaborateurs, vous pouvez tout à faire rendre l’ordinateur qui ne vous sert plus. " width="348"/>
+	<s:Label includeIn="coursRenouvellement2" x="238" y="399" text="L’autre gros avantage de la location de parc informatique c’est bien sûr de pouvoir profiter d’un parc renouvelé tous les deux ans, en moyenne et donc de profiter d’appareils de plus en plus économes. Le loyer est calculé, par poste, comptez environ 25 à 30 euros par poste pour un PC et 45 à 60 euros pour un serveur. " width="348"/>
+	<s:Label includeIn="coursRenouvellement2" x="568" y="475" text="2/2&#xd;"/>
+	<s:TextArea includeIn="coursCentralisation" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursCentralisation" x="232" y="137" text="Centralisation de données (DataCenters)" fontWeight="bold" textDecoration="underline"/>
+	<s:Label includeIn="coursCentralisation" x="228" y="157" text="Evaluez la consommation énergétique de votre data center et trouvez les solutions d'optimisation génératrices de R.O.I (Retour Sur Investissement) grâce à un audit (activité de contrôle et de conseil). " width="380"/>
+	<s:Label includeIn="coursCentralisation" x="232" y="206" text="Bien souvent les directions informatiques connaissent pas ou mal la part de la consommation électrique de leur centre de données dans la consommation électrique totale de l'entreprise. Celle-ci est pourtant très importante et a tendance à augmenter très rapidement. La consommation électrique des centres de données a doublé en 5 ans et le Gartner identifie même des risques d'alimentation électrique dans les années à venir. " width="376"/>
+	<s:Label includeIn="coursCentralisation" x="232" y="312" text="Selon une étude IDC, d'ici 2012 pour 1$ investit dans le hardware, 1$ d'énergie sera dépensé, alors que des solutions d'optimisation efficaces existent. Il est donc facile d'imaginer les économies potentielles à réaliser. Outre le gain financier, l'audit énergétique permet de mesurer l'empreinte écologique de ses data centers et de faire converger l'informatique dans la démarche globale de développement durable de son entreprise. " width="376"/>
+	<s:Label includeIn="coursCentralisation" x="232" y="418" text="Nous pouvons donc en conclure qu’il est essentiel pour les entreprises de regrouper toutes ces données vers les mêmes data center car plus ils se multiplieront plus la consommation d’énergie sera accrue." width="376"/>
+	<s:TextArea includeIn="coursPlan1" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursPlan1" x="231" y="137" text="Plan d’achat" textDecoration="underline" fontWeight="bold"/>
+	<s:Label includeIn="coursPlan1" x="231" y="157" text="Le plan d’achat sert à structurer les achats d’un domaine de la société afin de maîtriser et d’optimiser les coûts d’achat. Il permet d’identifier :" width="348"/>
+	<s:Label includeIn="coursPlan1" x="231" y="206" text="• Une liste de matériels à acheter, à interdire."/>
+	<s:Label includeIn="coursPlan1" x="231" y="226" text="• Une liste de fournisseurs."/>
+	<s:Label includeIn="coursPlan1" x="231" y="246" text="• Les types d’achat (location, achat, à développer en interne...)."/>
+	<s:Label includeIn="coursPlan1" x="231" y="266" text="• De mettre en concurrence les fournisseurs."/>
+	<s:Label includeIn="coursPlan1" x="231" y="286" text="• Et ensuite de suivre régulièrement les achats."/>
+	<s:Label includeIn="coursPlan1" x="231" y="311" text="L’application d’un plan d’achat permet à la société de rationaliser le processus d’achat pour faire des économies et éviter les gaspillages. Dans le cas des économies d’énergie, le plan d’achat ne sera pas mis en place pour faire uniquement des économies directes mais des économies à plus long terme sur les dépenses énergétiques. Le plan d’achat intégrera de plus des exigences écologiques ayant pour but de réduire l’empreinte écologique de l’activité informatique de la société." width="348"/>
+	<s:Label includeIn="coursPlan1" x="231" y="446" text="La mise en place du plan d’achat devra se faire de façon structurée, car sans cela le but des économies d’énergie ne sera pas atteint." width="348"/>
+	<s:Label includeIn="coursPlan1" x="547" y="475" text="1/4&#xd;&#xd;"/>
+	<s:TextArea includeIn="coursPlan2" x="217" y="126" width="395" height="369"/>
+	<s:Label includeIn="coursPlan2" x="242" y="152" text="Au-delà de la spécification des produits, le plan d’achat permet de demander aux fournisseurs de respecter des normes environnementales. Parmi les exigences que l’on lui demandera, on pourra prendre les mêmes exigences que celle de la société : respect du droit du travail, utilisation d’un processus de fabrication respectueux de l’environnement, interdiction de substance toxique... " width="348"/>
+	<s:Label includeIn="coursPlan2" x="242" y="258" text="Afin de simplifier ces exigences on pourra demander au fournisseur, le respect de la norme ISO 14001 qui vérifie le système de gestion environnemental. Dans tous les cas, le cycle global devra être pris en compte :" width="348"/>
+	<s:Label includeIn="coursPlan2" x="264" y="321" text="• Fabrication ou sous-traitance"/>
+	<s:Label includeIn="coursPlan2" x="264" y="337" text="• Assemblage"/>
+	<s:Label includeIn="coursPlan2" x="264" y="357" text="• Transport"/>
+	<s:Label includeIn="coursPlan2" x="264" y="377" text="• Emballage"/>
+	<s:Label includeIn="coursPlan2" x="264" y="397" text="• Recyclage"/>
+	<s:Label includeIn="coursPlan2" x="547" y="474" text="2/4&#xd;"/>
+	<s:TextArea includeIn="coursPlan3" x="217" y="126" width="395" height="369"/>
+	<s:Label x="238" y="150" text="Spécifier est une chose, le vérifier en est une autre. S’assurer que le fournisseur respecte les bonnes pratiques environnementales sera important. L’évaluation peut être coûteuse si l’on veut la faire de façon méthodique. Plusieurs solutions existent pour vérifier ces exigences :" width="348" includeIn="coursPlan3"/>
+	<s:Label includeIn="coursPlan3" x="264" y="227" text="• Demander un certificat d’un standard environnemental comme la norme ISO 14001. Cette attestation pourra être faite soit par auto-attestation de la société par elle-même ou soit par un organisme externe." width="348"/>
+	<s:Label includeIn="coursPlan3" x="264" y="296" text="• Envoyer une fiche d’évaluation au fournisseur. Cette évaluation pourra être renforcée par la fourniture de preuve." width="348"/>
+	<s:Label includeIn="coursPlan3" x="264" y="330" text="• Visiter si cela est possible le fournisseur afin de vérifier les bonnes pratiques." width="348"/>
+	<s:TextArea includeIn="coursPlan4" x="217" y="126" width="395" height="369"/>
+	<s:Label x="236" y="137" text="La mise en place d’exigences environnementales dans la chaîne d’achat informatique peut induire certaines problématiques et blocages. Il est donc important que ces améliorations soient intégrées dans la politique globale de la société. Responsables des achats, direction, responsables financiers et responsables informatiques devront se mettre en accord sur ce plan d’achat. Parmi les points bloquants on pourra trouver les suivants :" width="348" includeIn="coursPlan4"/>
+	<s:Label x="264" y="258" text="• Les exigences environnementales ne sont pas forcément en accord avec des exigences de recherche de diminution global des coûts. Le coût total de possession ou TCO doit dans ce cas-là être pris en compte. Il faudra intégrer les gains de toute la chaine énergétique dans le TCO." width="348" includeIn="coursPlan4"/>
+	<s:Label includeIn="coursPlan3" x="549" y="466" text="3/4&#xd;"/>
+	<s:Label includeIn="coursPlan4" x="264" y="335" text="• Le suivi et l’évaluation des fournisseurs peuvent être plus complexes qu’une simple évaluation économique. On choisira un niveau d’évaluation le plus adapté à la société." width="348"/>
+	<s:Label includeIn="coursPlan4" x="236" y="388" text="Idéalement, l’achat d’un nouvel équipement doit intégrer une évaluation et une mesure de la consommation réelle du matériel. En effet, la spécification soit par le fabricant soit par un organisme est une chose mais doit être vérifiée dans l’environnement et le contexte d’utilisation de la société. " width="348"/>
+	<s:Label includeIn="coursPlan4" x="552" y="465" text="4/4&#xd;"/>
+	<s:Label includeIn="interfaceJeux" x="289" y="10" text="{tunes}" width="56" color="#FFFFFF"/>
+	<s:TextArea includeIn="examDemaQ1" x="167" y="159" width="486" height="179" borderVisible="false"/>
+	<s:Label includeIn="examDemaQ1" x="181" y="177" text="1. Quelle est la moins coûteuse des solutions concernant la dématérialisation des échanges en société ?" width="461"/>
+	<s:Label includeIn="examDemaQ1" x="202" y="211" text="a) Externalisation de la consommation"/>
+	<s:Label includeIn="examDemaQ1" x="202" y="231" text="b) Externalisation des fax"/>
+	<s:Label includeIn="examDemaQ1" x="202" y="251" text="c) Dématérialisation des fax"/>
+	<s:Label includeIn="examDemaQ1" x="202" y="271" text="d) Dématérialisation des supports de stockage"/>
+	<s:CheckBox includeIn="examDemaQ1" x="330" y="466" label="a)"/>
+	<s:CheckBox includeIn="examDemaQ1" x="330" y="492" label="b)"/>
+	<s:CheckBox includeIn="examDemaQ1" x="330" y="518" label="c)"/>
+	<s:CheckBox includeIn="examDemaQ1" x="330" y="544" label="d)"/>
+	<s:TextArea includeIn="examDemaQ2" x="167" y="159" width="486" height="179"/>
+	<s:Label includeIn="examDemaQ2" x="195" y="179" text="2. Est-ce que l’installation de logiciel est très coûteuse ?"/>
+	<s:Label includeIn="examDemaQ2" x="218" y="199" text="a) Vrai"/>
+	<s:Label includeIn="examDemaQ2" x="218" y="219" text="b)  Faux"/>
+	<s:CheckBox includeIn="examDemaQ2" x="328" y="487" label="a)"/>
+	<s:CheckBox includeIn="examDemaQ2" x="328" y="513" label="b)"/>
+	<s:TextArea includeIn="examDemaQ3" x="167" y="159" borderVisible="false" width="486" height="179"/>
+	<s:Label includeIn="examDemaQ3" x="184" y="172" text="3. Faut-il privilégier l’impression recto/verso ?"/>
+	<s:Label includeIn="examDemaQ3" x="205" y="192" text="a) Non, il est plus compliqué et plus coûteux d’imprimer sur des pages recto/verso" width="448"/>
+	<s:Label includeIn="examDemaQ3" x="205" y="226" text="b) Non,  les imprimantes consomment plus d’énergie en imprimant ainsi"/>
+	<s:Label includeIn="examDemaQ3" x="205" y="246" text="c) Oui, mais cela coûte plus cher en encre"/>
+	<s:Label includeIn="examDemaQ3" x="205" y="266" text="d Oui, cela économise du papier  et réduit le temps d’impression"/>
+	<s:CheckBox includeIn="examDemaQ3" x="330" y="458" label="a)"/>
+	<s:CheckBox includeIn="examDemaQ3" x="330" y="484" label="b)"/>
+	<s:CheckBox includeIn="examDemaQ3" x="330" y="510" label="c)"/>
+	<s:CheckBox includeIn="examDemaQ3" x="330" y="536" label="d)"/>
+	<s:TextArea includeIn="examRecyclQ1" x="167" y="159" borderVisible="false" width="486" height="179"/>
+	<s:TextArea includeIn="examRecyclQ2" x="167" y="159" borderVisible="false" width="486" height="179"/>
+	<s:TextArea includeIn="examRecyclQ3" x="167" y="159" borderVisible="false" width="486" height="179"/>
+	<s:TextArea includeIn="examRecyclQ4" x="167" y="159" borderVisible="false" width="486" height="179"/>
+	<s:Label includeIn="examRecyclQ1" x="181" y="179" text="1. Aujourd’hui, quel est le pourcentage de papiers détruits en entreprise ?"/>
+	<s:Label includeIn="examRecyclQ1" x="197" y="199" text="a) 10%"/>
+	<s:Label includeIn="examRecyclQ1" x="197" y="219" text="b) 30%"/>
+	<s:Label includeIn="examRecyclQ1" x="197" y="239" text="c) 65%"/>
+	<s:Label includeIn="examRecyclQ1" x="197" y="259" text="d) 80% "/>
+	<s:Label includeIn="examRecyclQ2" x="184" y="177" text="2. Quels sont les impacts du recyclage du papier sur les entreprises ?"/>
+	<s:Label includeIn="examRecyclQ2" x="202" y="197" text="a) Création d’emplois "/>
+	<s:Label includeIn="examRecyclQ2" x="202" y="217" text="b) Perte d’emplois"/>
+	<s:Label includeIn="examRecyclQ2" x="202" y="237" text="c) Réduire son impact Environnemental "/>
+	<s:Label includeIn="examRecyclQ2" x="202" y="257" text="d) Dégradation de l’image de la société"/>
+	<s:Label includeIn="examRecyclQ2" x="202" y="277" text="e) Sensibilisation ses collaborateurs aux enjeux du développement "/>
+	<s:Label includeIn="examRecyclQ3" x="186" y="176" text="3. Est-ce qui la sensibilisation et la formation des salariés sont requises pour organiser la collecte des déchets ?" width="457"/>
+	<s:Label includeIn="examRecyclQ3" x="209" y="210" text="a) Vrai"/>
+	<s:Label includeIn="examRecyclQ3" x="209" y="230" text="b) Faux"/>
+	<s:Label includeIn="examRecyclQ4" x="190" y="179" text="4. Est-ce que l’entreprise doit appliquer la loi de 1992 ?"/>
+	<s:Label includeIn="examRecyclQ4" x="210" y="199" text="a) Non, mais elle doit faire des rapports sur ses consommations de papiers"/>
+	<s:Label includeIn="examRecyclQ4" x="210" y="219" text="b) Oui, toutes les entreprises sont soumises à cette loi "/>
+	<s:Label includeIn="examRecyclQ4" x="210" y="239" text="c Non, elles ne sont pas concernées par la loi"/>
+	<s:Label includeIn="examRecyclQ4" x="210" y="259" text="d) Oui, mais elles peuvent y échapper"/>
+	<s:CheckBox includeIn="examRecyclQ1" x="330" y="460" label="a)"/>
+	<s:CheckBox includeIn="examRecyclQ1" x="330" y="486" label="b)"/>
+	<s:CheckBox includeIn="examRecyclQ1" x="330" y="512" label="c)"/>
+	<s:CheckBox includeIn="examRecyclQ1" x="331" y="538" label="d)"/>
+	<s:CheckBox includeIn="examRecyclQ2" x="332" y="444" label="a)"/>
+	<s:CheckBox includeIn="examRecyclQ2" x="332" y="470" label="b)"/>
+	<s:CheckBox includeIn="examRecyclQ2" x="332" y="496" label="c)"/>
+	<s:CheckBox includeIn="examRecyclQ2" x="332" y="522" label="d)"/>
+	<s:CheckBox includeIn="examRecyclQ2" x="332" y="548" label="e)"/>
+	<s:CheckBox includeIn="examRecyclQ3" x="333" y="491" label="a)"/>
+	<s:CheckBox includeIn="examRecyclQ3" x="333" y="517" label="b)"/>
+	<s:CheckBox includeIn="examRecyclQ4" x="333" y="460" label="a)"/>
+	<s:CheckBox includeIn="examRecyclQ4" x="333" y="486" label="b)"/>
+	<s:CheckBox includeIn="examRecyclQ4" x="333" y="512" label="c)"/>
+	<s:CheckBox includeIn="examRecyclQ4" x="333" y="538" label="d)"/>
+	<s:TextArea includeIn="examVirtuQ1" x="167" y="159" borderVisible="false" width="486" height="179"/>
+	<s:TextArea includeIn="examVirtuQ2" x="167" y="159" borderVisible="false" width="486" height="179"/>
+	<s:TextArea includeIn="examVirtuQ3" x="167" y="159" borderVisible="false" width="486" height="179"/>
+	<s:TextArea includeIn="examVirtuQ4" x="167" y="159" width="486" height="179"/>
+	<s:Label includeIn="examVirtuQ1" x="184" y="177" text="1. Qu’est-ce que la virtualisation ?"/>
+	<s:Label includeIn="examVirtuQ1" x="206" y="197" text="a) Un seul système d’exploitation sur une machine"/>
+	<s:Label includeIn="examVirtuQ1" x="206" y="217" text="b) Plusieurs systèmes sur une machine "/>
+	<s:Label includeIn="examVirtuQ1" x="206" y="237" text="c) Plusieurs machines pour gérer un système"/>
+	<s:Label includeIn="examVirtuQ2" x="183" y="173" text="2. Quelle est la part de la facture d’électricité pour une entreprise en générale et l’estimation si cela continue d’évoluer ainsi ?" width="461"/>
+	<s:Label includeIn="examVirtuQ2" x="202" y="207" text="a) 30%, 40%"/>
+	<s:Label includeIn="examVirtuQ2" x="202" y="227" text="b) 25%, 70%"/>
+	<s:Label includeIn="examVirtuQ2" x="202" y="247" text="c) 20%, 60%"/>
+	<s:Label includeIn="examVirtuQ2" x="202" y="267" text="d) 10%, 50% "/>
+	<s:Label includeIn="examVirtuQ3" x="178" y="176" text="3. Quels sont les apports de la virtualisation ?"/>
+	<s:Label includeIn="examVirtuQ3" x="194" y="196" text="a) 80% de réduction des coûts d’énergie "/>
+	<s:Label includeIn="examVirtuQ3" x="194" y="216" text="b) 20% de réduction des coûts d’énergie"/>
+	<s:Label includeIn="examVirtuQ3" x="194" y="236" text="c) Détérioration des serveurs"/>
+	<s:Label includeIn="examVirtuQ3" x="194" y="256" text="d) Optimisation des serveurs "/>
+	<s:Label includeIn="examVirtuQ3" x="194" y="276" text="e) Réduction de son impact Environnemental "/>
+	<s:Label includeIn="examVirtuQ4" x="182" y="176" text="4. Aujourd’hui, si l’on dépense 10 euros en équipement Hardware combien allons-nous dépenser en coût énergétique ?" width="456"/>
+	<s:Label includeIn="examVirtuQ4" x="197" y="210" text="a) 5 Euros"/>
+	<s:Label includeIn="examVirtuQ4" x="197" y="230" text="b) 10 euros "/>
+	<s:Label includeIn="examVirtuQ4" x="197" y="250" text="c) 15 euros"/>
+	<s:Label includeIn="examVirtuQ4" x="197" y="270" text="d) 20 euros"/>
+	<s:CheckBox includeIn="examVirtuQ1" x="330" y="456" label="a)"/>
+	<s:CheckBox includeIn="examVirtuQ1" x="330" y="482" label="b)"/>
+	<s:CheckBox includeIn="examVirtuQ1" x="330" y="508" label="c)"/>
+	<s:CheckBox includeIn="examVirtuQ2" x="330" y="459" label="a)"/>
+	<s:CheckBox includeIn="examVirtuQ2" x="330" y="485" label="b)"/>
+	<s:CheckBox includeIn="examVirtuQ2" x="330" y="511" label="c)"/>
+	<s:CheckBox includeIn="examVirtuQ2" x="330" y="537" label="d)"/>
+	<s:CheckBox includeIn="examVirtuQ3" x="332" y="450" label="a)"/>
+	<s:CheckBox includeIn="examVirtuQ3" x="332" y="476" label="b)"/>
+	<s:CheckBox includeIn="examVirtuQ3" x="332" y="502" label="c)"/>
+	<s:CheckBox includeIn="examVirtuQ3" x="332" y="528" label="d)"/>
+	<s:CheckBox includeIn="examVirtuQ3" x="332" y="554" label="e)"/>
+	<s:CheckBox includeIn="examVirtuQ4" x="334" y="464" label="a)"/>
+	<s:CheckBox includeIn="examVirtuQ4" x="334" y="490" label="b)"/>
+	<s:CheckBox includeIn="examVirtuQ4" x="334" y="516" label="c)"/>
+	<s:CheckBox includeIn="examVirtuQ4" x="334" y="542" label="d)"/>
+	<s:TextArea includeIn="examTeletravailQ1" x="167" y="159" borderVisible="false" width="486" height="179"/>
+	<s:Label includeIn="examTeletravailQ1" x="191" y="171" text="1. Est-ce que le télétravail doit être volontaire ?"/>
+	<s:Label includeIn="examTeletravailQ1" x="216" y="191" text="a) oui"/>
+	<s:Label includeIn="examTeletravailQ1" x="216" y="211" text="b) non"/>
+	<mx:Image includeIn="banqueTP1" x="0" y="0" source="@Embed('assets/images/BanqueEntierFlou.png')"/>
+	<mx:Image includeIn="banqueTP2" x="0" y="0" source="@Embed('assets/images/BanqueEntierFlou.png')"/>
+	<mx:Image includeIn="banqueTP3" x="0" y="0" source="@Embed('assets/images/BanqueEntierFlou.png')"/>
+	<mx:Image includeIn="banqueTP4" x="0" y="0" source="@Embed('assets/images/BanqueEntierFlou.png')"/>
+	<mx:Image includeIn="banqueTP5" x="0" y="0" source="@Embed('assets/images/BanqueEntierFlou.png')"/>
+	<s:TextArea includeIn="banqueTP1" x="108" y="101" width="571" height="388"/>
+	<mx:Image includeIn="banqueTP1" x="99" y="101" source="@Embed('assets/images/InterfaceMission2.png')" width="599" height="394"/>
+	<s:Button includeIn="banqueTP1" x="494" y="384" label="Je repasserais" width="108" height="24" click="button4_clickHandler(event)"/>
+	<s:Label includeIn="banqueTP1" x="187" y="240" text="                                                                                                                                                  Bonjour, je suis le responsable du parc informatique. Votre aide pourra surement m’être précieuse une fois que vous aurez appris la compétence « Les softwares lié à l’économie d’énergie ». Repassez me voir quand ce sera fait." width="415" height="100" backgroundColor="#DACDCD"/>
+	<mx:Image includeIn="banqueTP1Play" x="0" y="0" source="@Embed('assets/images/BanqueEntierFlou.png')"/>
+	<s:TextArea includeIn="banqueTP1Play" x="173" y="151" width="536" height="357"/>
+	<mx:Image includeIn="banqueTP1Play" x="164" y="142" source="@Embed('assets/images/InterfaceMission2.png')" width="565" height="370"/>
+	<s:Label includeIn="banqueTP1Play" x="199" y="183" text="Ha ! Je vois que vous avez appris la compétence « Les softwares lié à l’économie d’énergie » ! Super, on va pouvoir commencer à travailler. Bon heuuu… par où on commence ?" width="492" backgroundColor="#F3C7C7"/>
+	<s:CheckBox includeIn="banqueTP1Play" x="199" y="241" label="Il va falloir commencer par analyser les besoins de l’entreprise pour ce qui concerne l’économie d’énergie" width="492" chromeColor="#FFFFFF"/>
+	<s:CheckBox includeIn="banqueTP1Play" x="199" y="262" label="On va tout de suite commencer à installer un logiciel d’économie d’énergie sur le parc informatique. " width="491"/>
+	<s:Button includeIn="banqueTP1Play" x="199" y="478" label="Quitter" click="button5_clickHandler(event)"/>
+	<s:Button includeIn="banqueTP1Play" x="610" y="478" label="Suivant"/>
+	<s:Label includeIn="banqueTP1Play" x="199" y="288" text="Ah bon, donc on va installer un logiciel. Il faut prendre lequel ?" backgroundColor="#F3C7C7"/>
+	<s:CheckBox includeIn="banqueTP1Play" x="199" y="308" label="AutoShutDownManager "/>
+	<s:CheckBox includeIn="banqueTP1Play" x="360" y="308" label="Power Off "/>
+	<s:CheckBox includeIn="banqueTP1Play" x="450" y="307" label="Minecraft"/>
+	<s:CheckBox includeIn="banqueTP1Play" x="542" y="307" label="ScreenSaver"/>
+	<s:Label includeIn="banqueTP1Play" x="199" y="334" text="Où doit-on installer ce logiciel ?" backgroundColor="#F3C7C7"/>
+	<s:CheckBox includeIn="banqueTP1Play" x="199" y="354" label="Sur les serveurs uniquement"/>
+	<s:CheckBox includeIn="banqueTP1Play" x="385" y="354" label="Sur le parc utilisateur en priorité "/>
+	<s:CheckBox includeIn="banqueTP1Play" x="586" y="354" label="Partout"/>
+	<s:Label includeIn="banqueTP1Play" x="199" y="380" text="Super, il reste quelque chose à faire ?" backgroundColor="#F3C7C7"/>
+	<s:CheckBox includeIn="banqueTP1Play" x="199" y="400"/>
+	<s:Label includeIn="banqueTP1Play" x="219" y="406" text="Oui, il reste encore à paramétrer le logiciel d’une manière spécifique à chaque parc afin d’optimiser l’économie. " width="475"/>
+	<s:CheckBox includeIn="banqueTP1Play" x="199" y="440" label="Non, tout est bien paramétré par défaut."/>
+	<s:TextArea includeIn="banqueTP2" x="127" y="121" width="580" height="400"/>
+	<mx:Image includeIn="banqueTP2" x="118" y="121" source="@Embed('assets/images/InterfaceMission2.png')"/>
+	<s:Label includeIn="banqueTP2" x="204" y="270" text="Regardez-moi tout mes petits serveurs, de pures merveilles hein ?! Cependant je me suis fait un peu remonter les bretelles lorsque l’on a vu la consommation que mes petits bijoux… On m’a parlé de « virtualisation » ou de quelque chose comme ça pour remédier à ce petit problème…" width="430" height="90" backgroundColor="#D0D0D0"/>
+	<s:Button includeIn="banqueTP2" x="532" y="427" label="Je repasserais" click="button6_clickHandler(event)"/>
+	<mx:Image includeIn="banqueTP2Play" x="0" y="0" source="@Embed('assets/images/BanqueEntierFlou.png')"/>
+	<s:TextArea includeIn="banqueTP2Play" x="124" y="104" width="586" height="387"/>
+	<mx:Image includeIn="banqueTP2Play" x="120" y="104" source="@Embed('assets/images/InterfaceMission2.png')"/>
+	<s:Label includeIn="banqueTP2Play" x="147" y="118" text="Alala mes ordinateurs consomment beaucoup trop, peut-être auriez-vous un peu de votre temps pour m’aider ?" width="552" backgroundColor="#F6CCCC"/>
+	<s:Label includeIn="banqueTP2Play" x="147" y="152" text="1) Bon déjà c’est quoi ça la virtualisation ?!" backgroundColor="#F6CCCC"/>
+	<s:CheckBox includeIn="banqueTP2Play" x="147" y="172" label="Faire fonctionner plusieurs systèmes d’exploitation simultanément sur une seule machine"/>
+	<s:CheckBox includeIn="banqueTP2Play" x="147" y="198" label="Virtualiser des machines en 3 dimensions"/>
+	<s:CheckBox includeIn="banqueTP2Play" x="147" y="224" label="Visualiser le contenu de machines existantes virtuellement sur une autre machine"/>
+	<s:Label includeIn="banqueTP2Play" x="147" y="250" text="2) Merci de vos précisions, mais en quoi cela me concerne ?" backgroundColor="#F6CCCC"/>
+	<s:CheckBox includeIn="banqueTP2Play" x="147" y="270"/>
+	<s:Label includeIn="banqueTP2Play" x="173" y="276" text="Virtualiser des machines permettra d’utiliser une seule machine dans l’entreprise plutôt que plusieurs, une économie sûr d’énergie et ainsi de coût" width="527"/>
+	<s:CheckBox includeIn="banqueTP2Play" x="147" y="310" label="Les machines seront hébergés dans plusieurs locaux afin d’optimiser le coût énergétique"/>
+	<s:CheckBox includeIn="banqueTP2Play" x="147" y="336"/>
+	<s:Label includeIn="banqueTP2Play" x="169" y="335" text="Virtualiser des machines permettra de gérer plus efficacement le coût en énergie étant donné que l’on peut sélectionner la consommation de nos machines" width="527"/>
+	<s:Label includeIn="banqueTP2Play" x="147" y="369" text="3) Je comprends ! Alors comment je pourrai mettre ça en place ? Que me conseillez-vous ?" backgroundColor="#F6CCCC"/>
+	<s:CheckBox includeIn="banqueTP2Play" x="147" y="389" label="Installer le logiciel VmWare"/>
+	<s:CheckBox includeIn="banqueTP2Play" x="324" y="389" label="Installer le logiciel Virtual Desktop"/>
+	<s:CheckBox includeIn="banqueTP2Play" x="147" y="415" label="Acheter une machine virtuelle que l’on peut trouver dans les boutiques informatiques"/>
+	<s:CheckBox includeIn="banqueTP2Play" x="147" y="441" label="Utiliser la fonction « Virtualisation » de votre système d’exploitation"/>
+	<s:Button includeIn="banqueTP2Play" x="614" y="470" label="Suivant" click="button9_clickHandler(event)"/>
+	<s:Button includeIn="banqueTP2Play" x="169" y="470" label="Quitter" click="button7_clickHandler(event)"/>
+	<mx:Image includeIn="banqueTP2Play2" x="0" y="0" source="@Embed('assets/images/BanqueEntierFlou.png')"/>
+	<s:TextArea includeIn="banqueTP2Play2" x="129" y="114" width="579" height="399"/>
+	<mx:Image includeIn="banqueTP2Play2" x="118" y="114" source="@Embed('assets/images/InterfaceMission2.png')"/>
+	<s:Label includeIn="banqueTP2Play2" x="163" y="148" text="4 Voilà qui est parfait ! Et je peux virtualiser autant de machines que possible ?" backgroundColor="#F6CCCC"/>
+	<s:CheckBox includeIn="banqueTP2Play2" x="163" y="168" label="Seulement en fonction des capacités de votre machine physique "/>
+	<s:CheckBox includeIn="banqueTP2Play2" x="163" y="194" label="Oui, les machines étant virtuelles, il n’y a aucune restriction"/>
+	<s:CheckBox includeIn="banqueTP2Play2" x="163" y="220" label="Non, cette fonctionnalité ne peut marcher qu’une fois"/>
+	<s:Button includeIn="banqueTP2Play2" x="608" y="466" label="Suivant"/>
+	<s:Button includeIn="banqueTP2Play2" x="163" y="466" label="Précédent" click="button8_clickHandler(event)"/>
+	<s:TextArea includeIn="banqueTP3" x="107" y="119" width="599" height="382"/>
+	<mx:Image includeIn="banqueTP3" x="105" y="110" source="@Embed('assets/images/InterfaceMission2.png')"/>
+	<s:Label includeIn="banqueTP3" x="162" y="252" text="Haaaa tous ces papiers ! J’en peux plus, et quelques chose me dit qu’il y a une solution bien plus simple pour gérer tout ça." width="497" height="40" backgroundColor="#DFDCDC"/>
+	<s:Button includeIn="banqueTP3" x="558" y="460" label="Je vais m'informer.." click="button10_clickHandler(event)"/>
+	<mx:Image includeIn="banqueTP3Play" x="0" y="0" source="@Embed('assets/images/BanqueEntierFlou.png')"/>
+	<s:TextArea includeIn="banqueTP3Play" x="138" y="120" width="590" height="391"/>
+	<mx:Image includeIn="banqueTP3Play" x="128" y="111" source="@Embed('assets/images/InterfaceMission2.png')"/>
+	<s:Button includeIn="banqueTP3Play" x="159" y="468" label="Quitter" click="button11_clickHandler(event)"/>
+	<s:Button includeIn="banqueTP3Play" x="632" y="468" label="Suivant" click="button12_clickHandler(event)"/>
+	<s:Label includeIn="banqueTP3Play" x="164" y="144" text="J’ai besoin d’aide ! Ces papiers me rende folle. Il va me falloir une solution pour ne pas avoir à en gérer autant." width="538" backgroundColor="#F6CCCC"/>
+	<s:Label includeIn="banqueTP3Play" x="164" y="178" text="1) Il doit y avoir un moyen de réduire tout ces papiers grâce à vos méthodes Green IT ?!" backgroundColor="#F6CCCC"/>
+	<s:CheckBox includeIn="banqueTP3Play" x="164" y="198" label="Il suffit d’imprimer sur des feuilles recto-verso !"/>
+	<s:CheckBox includeIn="banqueTP3Play" x="164" y="224" label="Numériser les documents de sorte à les lire uniquement sur l’ordinateur"/>
+	<s:CheckBox includeIn="banqueTP3Play" x="164" y="250" label="Ecrire uniquement ce qui est important sur les documents"/>
+	<s:CheckBox includeIn="banqueTP3Play" x="164" y="276" label="Classer les efficacement les documents"/>
+	<s:Label includeIn="banqueTP3Play" x="164" y="302" text="2) Oui bien sûr !! Mais en quoi cela va-t-il me faciliter la vie ?" backgroundColor="#F6CCCC"/>
+	<s:CheckBox includeIn="banqueTP3Play" x="164" y="322" label="Une facilité d’accès"/>
+	<s:CheckBox includeIn="banqueTP3Play" x="298" y="322" label="Des documents plus lisibles"/>
+	<s:CheckBox includeIn="banqueTP3Play" x="483" y="322" label="Vous ne verrez pas la différence"/>
+	<s:Label includeIn="banqueTP3Play" x="164" y="348" text="3) D’accord je comprends mais bon, il est toujours possible de se passer de ces méthodes. En quoi cela pourrait améliorer l’entreprise vos méthodes Green IT ?" width="548" backgroundColor="#F6CCCC"/>
+	<s:CheckBox includeIn="banqueTP3Play" x="164" y="382" label="Réduire les coûts rapporte un meilleur retour sur investissement à l’entreprise"/>
+	<s:CheckBox includeIn="banqueTP3Play" x="164" y="408" label="Une meilleure gestion des documents"/>
+	<s:CheckBox includeIn="banqueTP3Play" x="161" y="438" label="Soutenir le label Green"/>
+	<mx:Image includeIn="banqueTP3Play2" x="0" y="-1" source="@Embed('assets/images/BanqueEntierFlou.png')"/>
+	<s:TextArea includeIn="banqueTP3Play2" x="124" y="124" width="582" height="382"/>
+	<mx:Image includeIn="banqueTP3Play2" x="115" y="115" source="@Embed('assets/images/InterfaceMission2.png')"/>
+	<s:Button includeIn="banqueTP3Play2" x="143" y="473" label="Précedent" click="button13_clickHandler(event)"/>
+	<s:Button includeIn="banqueTP3Play2" x="616" y="473" label="Suivant"/>
+	<s:Label includeIn="banqueTP3Play2" x="143" y="139" text="4) Je dois avouer que je suis quant même habituée à lire des documents sur feuilles. Qu’est ce que je pourrai faire pour limiter le coût en entreprise ?" width="553" backgroundColor="#F6CCCC"/>
+	<s:CheckBox includeIn="banqueTP3Play2" x="146" y="173" label="Imprimer uniquement ce qui est nécessaire"/>
+	<s:CheckBox includeIn="banqueTP3Play2" x="146" y="199" label="Configurer l’imprimante pour une impression automatique en mode recto verso"/>
+	<s:CheckBox includeIn="banqueTP3Play2" x="146" y="225" label="Eviter l’impression couleur"/>
+	<s:CheckBox includeIn="banqueTP3Play2" x="331" y="225" label="Ce n’est pas possible, il faudrait ne plus utiliser de papier"/>
+	<s:Label includeIn="banqueTP3Play2" x="146" y="251" text="5) Ahaha, c’est bête que les autres entreprises n’ait pas un expert Green IT pour leur expliquer tout ça !" width="560" backgroundColor="#F6CCCC"/>
+	<s:CheckBox includeIn="banqueTP3Play2" x="146" y="271"/>
+	<s:Label includeIn="banqueTP3Play2" x="172" y="271" text="En faite, il existe une politique de réduction des impressions en entreprise qui sont pour la plupart non connu par les salariés" width="524"/>
+	<s:CheckBox includeIn="banqueTP3Play2" x="146" y="297" label="Oui, seul l’expert Green IT aurait pu vous donner accès à de telles informations"/>
+	<s:Label includeIn="banqueTP3Play2" x="146" y="323" text="6) Dans le cas où je souhaiterai transformer mes documents numériquement, y a-t-il des choses à savoir ?" width="550" backgroundColor="#F6CCCC"/>
+	<s:CheckBox includeIn="banqueTP3Play2" x="146" y="357" label="Eviter les documents Word et Excel car ce sont des fichiers modifiables "/>
+	<s:CheckBox includeIn="banqueTP3Play2" x="146" y="383" label="Numériser tous les documents pour vous faciliter la tâche"/>
+	<s:CheckBox includeIn="banqueTP3Play2" x="146" y="409" label="En cas d’envoi de documents numériques aux clients, il ne faut pas oublier de leur proposer avant"/>
+	<mx:Image includeIn="interfaceJeux" x="95" y="72" source="assets/images/SecretaireNormal.png" width="278" height="380" id="secretaireNM"/>
+	
+	<!--les transitions entre les etats-->
+	
+	<s:transitions>
+		<s:Transition autoReverse="true" fromState="menuTitre" toState="interfaceJeux">
+			<s:Parallel>
+				<s:Parallel target="{bitmapimage3}">
+					<s:Fade duration="1500">
+						<s:easer>
+							<s:Sine easeInFraction="0.87"/>
+						</s:easer>
+					</s:Fade>
+				</s:Parallel>
+				<s:Parallel target="{button1}">
+					<s:Fade duration="1000">
+						<s:easer>
+							<s:Sine easeInFraction="0.6"/>
+						</s:easer>
+					</s:Fade>
+				</s:Parallel>
+				<s:Parallel target="{button2}">
+					<s:Fade duration="1000">
+						<s:easer>
+							<s:Sine easeInFraction="0.6"/>
+						</s:easer>
+					</s:Fade>
+				</s:Parallel>
+				<s:Parallel target="{button3}">
+					<s:Fade duration="1000">
+						<s:easer>
+							<s:Sine easeInFraction="0.6"/>
+						</s:easer>
+					</s:Fade>
+				</s:Parallel>
+				<s:Parallel target="{button4}">
+					<s:Fade duration="1000">
+						<s:easer>
+							<s:Sine easeInFraction="0.6"/>
+						</s:easer>
+					</s:Fade>
+				</s:Parallel>
+				<s:Parallel target="{button5}">
+					<s:Fade duration="1000">
+						<s:easer>
+							<s:Sine easeInFraction="0.6"/>
+						</s:easer>
+					</s:Fade>
+				</s:Parallel>
+				<s:Parallel target="{button6}">
+					<s:Fade duration="500" startDelay="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button8}">
+					<s:Fade duration="500" startDelay="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button9}">
+					<s:Fade duration="500" startDelay="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button16}">
+					<s:Fade duration="500" startDelay="1600"/>
+				</s:Parallel>
+				<s:Parallel target="{button17}">
+					<s:Fade duration="500" startDelay="1500"/>
+				</s:Parallel>
+				<s:Parallel target="{button15}">
+					<s:Fade duration="500" startDelay="1550"/>
+				</s:Parallel>
+				<s:Parallel target="{button19}">
+					<s:Fade duration="500" startDelay="1450"/>
+				</s:Parallel>
+				<s:Parallel target="{button18}">
+					<s:Fade duration="500" startDelay="1650"/>
+				</s:Parallel>
+				<s:Parallel target="{button14}">
+					<s:Fade duration="500" startDelay="1400"/>
+				</s:Parallel>
+				<s:Parallel target="{button13}">
+					<s:Fade duration="500" startDelay="1500"/>
+				</s:Parallel>
+				<s:Parallel target="{bitmapimage21}">
+					<s:Fade duration="500" startDelay="0"/>
+				</s:Parallel>
+				<s:Parallel target="{bitmapimage4}">
+					<s:Fade duration="500" startDelay="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button10}">
+					<s:Fade duration="500" startDelay="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+		<s:Transition autoReverse="true" fromState="menuJeux" toState="interfaceJeux">
+			<s:Parallel>
+				<s:Parallel target="{bitmapimage3}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button1}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button2}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button3}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button4}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button5}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button16}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button17}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button15}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button19}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button18}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button14}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button13}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{bitmapimage17}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button21}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button22}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button23}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button24}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button25}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button26}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+		<s:Transition autoReverse="true" fromState="chargerPartieTitre" toState="interfaceJeux">
+			<s:Parallel>
+				<s:Parallel target="{bitmapimage3}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button1}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{bitmapimage21}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button2}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button3}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button4}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button5}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button16}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button17}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button15}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button19}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button18}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button14}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button13}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{bitmapimage14}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{bitmapimage15}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button12}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+		<s:Transition autoReverse="true" fromState="cours" toState="interfaceJeux">
+			<s:Parallel>
+				<s:Parallel target="{bitmapimage3}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button1}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{bitmapimage21}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button2}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button3}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button4}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button5}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button16}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button17}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button15}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button19}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button18}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button14}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button13}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{bitmapimage22}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{bitmapimage23}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button29}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+		<s:Transition autoReverse="true" fromState="missionsDisponible" toState="interfaceJeux">
+			<s:Parallel>
+				<s:Parallel target="{bitmapimage3}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button1}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{bitmapimage21}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button2}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button3}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button4}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button5}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button16}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button17}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button15}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button19}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button18}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button14}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button13}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{bitmapimage26}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{bitmapimage27}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{rect1}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{bitmapimage28}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{button36}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+	</s:transitions>
+	<fx:Private/>
+</s:WindowedApplication>
